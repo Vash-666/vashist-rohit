@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Vashist Rohit | Conscious Builder — Web3 PM, Pilot & Life Coach</title>
+ <meta name="description" content="Vashist Rohit helps founders and leaders build conscious success through product strategy, executive coaching, and mindful investing. Book a discovery call.">
+ <meta name="keywords" content="conscious leadership coach, web3 product manager, executive coach for founders, life coach for entrepreneurs, conscious investor, product strategy consultant">
+ 
+ <!-- Open Graph -->
+ <meta property="og:title" content="Vashist Rohit | Conscious Builder">
+ <meta property="og:description" content="Web3 PM • Pilot • Life Coach • Conscious Investor">
+ <meta property="og:type" content="website">
+ <meta property="og:image" content="/og-image.jpg">
+ 
+ <!-- Twitter Cards -->
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Vashist Rohit | Conscious Builder">
+ <meta name="twitter:description" content="Web3 PM • Pilot • Life Coach • Conscious Investor">
+ 
+ <script src="https://cdn.tailwindcss.com"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ <style>
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+ :root {
+ --primary: #0F172A;
+ --accent: #D4A017;
+ }
+ body { font-family: 'Inter', system-ui, sans-serif; }
+ .heading-serif { font-family: 'Playfair Display', Georgia, serif; }
+ .section { scroll-margin-top: 80px; }
+ .nav-scrolled { background-color: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
+ .gold-accent { color: #D4A017; }
+ .premium-shadow { box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+ 
+ /* Integration Cards with Hover Reveal */
+ .integration-card { 
+ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+ position: relative;
+ overflow: hidden;
+ }
+ .integration-card:hover { 
+ transform: translateY(-8px); 
+ box-shadow: 0 20px 40px -10px rgba(212, 160, 23, 0.15);
+ border-color: rgba(212, 160, 23, 0.5);
+ }
+ .integration-card .hover-reveal {
+ opacity: 0;
+ transform: translateY(10px);
+ transition: all 0.3s ease;
+ }
+ .integration-card:hover .hover-reveal {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ .integration-card .default-content {
+ transition: all 0.3s ease;
+ }
+ .integration-card:hover .default-content {
+ transform: translateY(-5px);
+ }
+ 
+ .nav-link { transition: color 0.2s ease; }
+ .nav-link:hover { color: #D4A017; }
+ .stat-number { font-variant-numeric: tabular-nums; }
+ 
+ /* Animations */
+ @keyframes fadeInUp {
+ from {
+ opacity: 0;
+ transform: translateY(30px);
+ }
+ to {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ @keyframes fadeIn {
+ from { opacity: 0; }
+ to { opacity: 1; }
+ }
+ @keyframes countUp {
+ from { opacity: 0; transform: translateY(10px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+ .animate-fade-in-up {
+ animation: fadeInUp 0.6s ease-out forwards;
+ }
+ .animate-fade-in {
+ animation: fadeIn 0.8s ease-out forwards;
+ }
+ .animate-delay-100 { animation-delay: 0.1s; }
+ .animate-delay-200 { animation-delay: 0.2s; }
+ .animate-delay-300 { animation-delay: 0.3s; }
+ .animate-delay-400 { animation-delay: 0.4s; }
+ 
+ /* Scroll reveal */
+ .reveal {
+ opacity: 0;
+ transform: translateY(30px);
+ transition: all 0.6s ease-out;
+ }
+ .reveal.active {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ 
+ /* Mobile menu */
+ .mobile-menu {
+ transform: translateX(100%);
+ transition: transform 0.3s ease;
+ }
+ .mobile-menu.open {
+ transform: translateX(0);
+ }
+ 
+ /* Testimonial card hover */
+ .testimonial-card {
+ transition: all 0.3s ease;
+ }
+ .testimonial-card:hover {
+ transform: translateY(-4px);
+ border-color: rgba(212, 160, 23, 0.3);
+ }
+ 
+ /* Offering card */
+ .offering-card {
+ transition: all 0.3s ease;
+ }
+ .offering-card:hover {
+ transform: translateY(-4px);
+ box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+ }
+ 
+ /* Stats bar animation */
+ .stat-item {
+ opacity: 0;
+ transform: translateY(20px);
+ }
+ .stat-item.visible {
+ animation: countUp 0.6s ease-out forwards;
+ }
+ </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+ <!-- NAV -->
+ <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-950/90 backdrop-blur-lg border-b border-slate-800">
+ <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+ <a href="#" class="flex items-center gap-x-3">
+ <div class="w-9 h-9 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full flex items-center justify-center">
+ <span class="text-slate-950 font-bold text-xl">VR</span>
+ </div>
+ <div>
+ <div class="font-semibold tracking-tight text-xl">Vashist Rohit</div>
+ <div class="text-[10px] text-slate-400 -mt-1">INTENTIONAL BUILDER</div>
+ </div>
+ </a>
+
+ <!-- Desktop Nav -->
+ <div class="hidden md:flex items-center gap-x-8 text-sm">
+ <a href="#about" class="nav-link text-slate-300 hover:text-white">About</a>
+ <a href="#integration" class="nav-link text-slate-300 hover:text-white">The Integration</a>
+ <a href="#offerings" class="nav-link text-slate-300 hover:text-white">Work With Me</a>
+ <a href="#philosophy" class="nav-link text-slate-300 hover:text-white">Philosophy</a>
+ <a href="#insights" class="nav-link text-slate-300 hover:text-white">Insights</a>
+ </div>
+
+ <!-- Desktop CTA -->
+ <div class="hidden md:flex items-center gap-x-4">
+ <a href="#connect" class="px-5 py-2.5 text-sm font-medium border border-slate-700 hover:bg-slate-800 rounded-full transition-colors">
+ Get in Touch
+ </a>
+ <button onclick="openCalendly()" class="px-6 py-2.5 bg-amber-400 hover:bg-amber-300 transition-colors text-slate-950 font-semibold text-sm rounded-full flex items-center gap-x-2">
+ <i class="fa-solid fa-calendar-check"></i>
+ <span>Book Session</span>
+ </button>
+ </div>
+
+ <!-- Mobile Menu Button -->
+ <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2">
+ <i class="fa-solid fa-bars text-xl"></i>
+ </button>
+ </div>
+
+ <!-- Mobile Menu -->
+ <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-slate-900 border-l border-slate-800 z-50 md:hidden">
+ <div class="p-6">
+ <div class="flex justify-between items-center mb-8">
+ <span class="font-semibold text-lg">Menu</span>
+ <button id="mobile-menu-close" class="text-slate-400 hover:text-white">
+ <i class="fa-solid fa-xmark text-xl"></i>
+ </button>
+ </div>
+ <div class="flex flex-col gap-4">
+ <a href="#about" class="nav-link text-slate-300 hover:text-white py-2 border-b border-slate-800">About</a>
+ <a href="#integration" class="nav-link text-slate-300 hover:text-white py-2 border-b border-slate-800">The Integration</a>
+ <a href="#offerings" class="nav-link text-slate-300 hover:text-white py-2 border-b border-slate-800">Work With Me</a>
+ <a href="#philosophy" class="nav-link text-slate-300 hover:text-white py-2 border-b border-slate-800">Philosophy</a>
+ <a href="#insights" class="nav-link text-slate-300 hover:text-white py-2 border-b border-slate-800">Insights</a>
+ <a href="#testimonials" class="nav-link text-slate-300 hover:text-white py-2 border-b border-slate-800">Testimonials</a>
+ <a href="#connect" class="nav-link text-slate-300 hover:text-white py-2">Get in Touch</a>
+ </div>
+ <button onclick="openCalendly()" class="w-full mt-6 px-6 py-3 bg-amber-400 hover:bg-amber-300 transition-colors text-slate-950 font-semibold rounded-full flex items-center justify-center gap-x-2">
+ <i class="fa-solid fa-calendar-check"></i>
+ <span>Book Session</span>
+ </button>
+ </div>
+ </div>
+ <!-- Mobile Menu Overlay -->
+ <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
+ </nav>
+
+ <!-- HERO -->
+ <header class="pt-20 min-h-[100dvh] flex items-center relative overflow-hidden bg-[radial-gradient(#1e2937_0.8px,transparent_1px)] bg-[length:5px_5px]">
+ <div class="max-w-5xl mx-auto px-6 pt-12 pb-20 text-center relative z-10">
+ <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-700 mb-6 animate-fade-in">
+ <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+ <span class="text-xs font-medium tracking-[2px] text-emerald-400">CURRENTLY: WEB3 PM • PILOT TRAINING • COACHING</span>
+ </div>
+
+ <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter leading-[0.95] mb-4 animate-fade-in-up">
+ Living Intentionally.<br>
+ Building Boldly.<br>
+ <span class="gold-accent">Flying Free.</span>
+ </h1>
+
+ <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 mb-10 animate-fade-in-up animate-delay-100">
+ Vashist Rohit — Web3 Product Manager, Private Pilot in training, Life Coach & Conscious Investor crafting a life of aligned impact, discipline, and freedom.
+ </p>
+
+ <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-200">
+ <a href="#offerings"
+ class="group px-8 py-4 bg-white text-slate-950 font-semibold rounded-2xl flex items-center justify-center gap-x-3 hover:bg-amber-50 transition-all text-lg">
+ Explore How We Can Work Together
+ <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+ </a>
+ <a href="#about"
+ class="px-8 py-4 border border-slate-700 hover:bg-slate-900 transition-all rounded-2xl flex items-center justify-center gap-x-3 text-lg">
+ Discover My Story
+ </a>
+ </div>
+
+ <div class="mt-16 flex justify-center gap-x-8 text-xs tracking-widest text-slate-400 animate-fade-in-up animate-delay-300">
+ <div>WEB3</div>
+ <div>AVIATION</div>
+ <div>COACHING</div>
+ <div>INVESTING</div>
+ </div>
+ </div>
+
+ <!-- Subtle aviation/tech visual hint -->
+ <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+ </header>
+
+ <!-- STATS BAR -->
+ <section id="stats" class="border-y border-slate-800 bg-slate-900/50 py-12">
+ <div class="max-w-6xl mx-auto px-6">
+ <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+ <div class="stat-item" data-delay="0">
+ <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">8+</div>
+ <div class="text-sm text-slate-400 uppercase tracking-wider">Years Experience</div>
+ </div>
+ <div class="stat-item" data-delay="100">
+ <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">20+</div>
+ <div class="text-sm text-slate-400 uppercase tracking-wider">Products Shipped</div>
+ </div>
+ <div class="stat-item" data-delay="200">
+ <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">500+</div>
+ <div class="text-sm text-slate-400 uppercase tracking-wider">Coaching Hours</div>
+ </div>
+ <div class="stat-item" data-delay="300">
+ <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">10+</div>
+ <div class="text-sm text-slate-400 uppercase tracking-wider">Investment Deals</div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- TRUST / ROLES -->
+ <div class="border-b border-slate-800 py-5">
+ <div class="max-w-6xl mx-auto px-6">
+ <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 text-sm text-slate-400">
+ <div class="flex items-center gap-x-2"><i class="fa-solid fa-rocket text-amber-400"></i> <span>Web3 Product Leader</span></div>
+ <div class="flex items-center gap-x-2"><i class="fa-solid fa-plane text-amber-400"></i> <span>Private Pilot (Training)</span></div>
+ <div class="flex items-center gap-x-2"><i class="fa-solid fa-heart-pulse text-amber-400"></i> <span>Life Coach & Mentor</span></div>
+ <div class="flex items-center gap-x-2"><i class="fa-solid fa-chart-line text-amber-400"></i> <span>Conscious Investor & Builder</span></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- ABOUT / STORY -->
+ <section id="about" class="section max-w-5xl mx-auto px-6 py-20">
+ <div class="grid md:grid-cols-12 gap-x-12 items-start">
+ <div class="md:col-span-5">
+ <div class="sticky top-24">
+ <div class="uppercase tracking-[3px] text-xs text-amber-400 mb-3">THE JOURNEY SO FAR</div>
+ <h2 class="heading-serif text-4xl md:text-5xl leading-none tracking-tighter">From Business Analyst<br>to Intentional<br>Multi-Creator.</h2>
+
+ <div class="mt-8 flex items-center gap-x-4">
+ <div class="flex -space-x-2">
+ <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
+ <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
+ <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
+ </div>
+ <span class="text-sm text-slate-400">Featured in personal growth & Web3 circles</span>
+ </div>
+ </div>
+ </div>
+
+ <div class="md:col-span-7 mt-10 md:mt-0 space-y-6 text-[15px] leading-relaxed text-slate-300">
+ <p>I am Vashist Rohit. For years I played the games society and others set for me — chasing degrees, income, and external validation. They brought some success, but eventually felt heavy and misaligned. I stepped back, got radically honest, and began building a life I actually own.</p>
+
+ <p>Today I operate at the intersection of <strong class="text-white">cutting-edge technology</strong>, <strong class="text-white">aviation discipline</strong>, <strong class="text-white">holistic coaching</strong>, and <strong class="text-white">conscious wealth creation</strong>. I didn't arrive here by accident. Every step — from deep dives into the Bhagavad Gita and spiritual texts, to rigorous health optimization, 100+ books read and digested, daily discipline practices, and pursuing my Private Pilot License — has been intentional.</p>
+
+ <p>My background as a Business Analyst gave me the analytical foundation. Now I channel that into <strong>Web3 Product Management</strong>, where I help teams build decentralized products that actually serve humans. I'm also training to become a licensed Private Pilot — an experience that sharpens focus, situational awareness, and long-term thinking in profound ways.</p>
+
+ <p>As a Life Coach, I work with ambitious individuals (especially in tech and Web3) who want more than surface-level success. I help them build unshakeable habits, clarify their personal philosophy, protect their energy, and align career moves with their deeper values and purpose.</p>
+
+ <p>My investing work focuses on Web3 and blockchain projects that combine strong fundamentals with real-world impact. Wealth, to me, is a tool for freedom — the freedom to live fully, support family and community, travel, create, and give back.</p>
+
+ <div class="pt-4 border-t border-slate-800">
+ <p class="italic text-slate-400">"The goal isn't just to make a million. It's to acquire the mindset, discipline, and clarity that naturally creates aligned abundance while living a life of harmony, creativity, and contribution."</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- THE INTEGRATION - ENHANCED CARDS -->
+ <section id="integration" class="section bg-slate-900 py-20 border-y border-slate-800">
+ <div class="max-w-6xl mx-auto px-6">
+ <div class="text-center mb-12 reveal">
+ <div class="inline-block px-4 py-1 rounded-full bg-slate-800 text-amber-400 text-xs tracking-[2.5px] mb-4">WHAT MAKES THIS DIFFERENT</div>
+ <h2 class="heading-serif text-4xl md:text-5xl tracking-tighter">The Power of Integration.<br>Not Compartmentalization.</h2>
+ <p class="mt-4 max-w-md mx-auto text-slate-400">Most people silo their identities. I weave mine together into one coherent, authentic operating system.</p>
+ </div>
+
+ <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <!-- Card 1: Product Architect -->
+ <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+ <div class="default-content">
+ <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+ <i class="fa-solid fa-layer-group text-2xl"></i>
+ </div>
+ <h4 class="font-semibold text-xl mb-3">Product Architect</h4>
+ <p class="text-slate-400 text-[14px] mb-4">Building decentralized systems that actually work. 8+ years shipping products from 0→1.</p>
+ </div>
+ <div class="hover-reveal pt-4 border-t border-slate-800">
+ <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
+ <p class="text-sm text-slate-300">Strategic product thinking that cuts through complexity. I help you build what matters, not just what ships.</p>
+ </div>
+ </div>
+
+ <!-- Card 2: Perspective Engineer -->
+ <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+ <div class="default-content">
+ <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+ <i class="fa-solid fa-plane-up text-2xl"></i>
+ </div>
+ <h4 class="font-semibold text-xl mb-3">Perspective Engineer</h4>
+ <p class="text-slate-400 text-[14px] mb-4">The cockpit taught me what boardrooms couldn't: clarity under pressure, systems thinking, and the value of altitude.</p>
+ </div>
+ <div class="hover-reveal pt-4 border-t border-slate-800">
+ <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
+ <p class="text-sm text-slate-300">Calm decision-making under uncertainty. The ability to see the big picture while managing critical details.</p>
+ </div>
+ </div>
+
+ <!-- Card 3: Transformation Partner -->
+ <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+ <div class="default-content">
+ <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+ <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
+ </div>
+ <h4 class="font-semibold text-xl mb-3">Transformation Partner</h4>
+ <p class="text-slate-400 text-[14px] mb-4">I don't give advice—I help you hear your own wisdom. 500+ hours coaching founders and executives.</p>
+ </div>
+ <div class="hover-reveal pt-4 border-t border-slate-800">
+ <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
+ <p class="text-sm text-slate-300">Deep clarity on what you actually want. A mirror for your blind spots and an accelerator for your growth.</p>
+ </div>
+ </div>
+
+ <!-- Card 4: Capital Alchemist -->
+ <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+ <div class="default-content">
+ <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+ <i class="fa-solid fa-coins text-2xl"></i>
+ </div>
+ <h4 class="font-semibold text-xl mb-3">Capital Alchemist</h4>
+ <p class="text-slate-400 text-[14px] mb-4">Deploying capital where returns meet impact. Focus: Web3 infrastructure, regenerative tech, human potential.</p>
+ </div>
+ <div class="hover-reveal pt-4 border-t border-slate-800">
+ <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
+ <p class="text-sm text-slate-300">Access to aligned capital and strategic guidance. Investment relationships built on shared values, not just returns.</p>
+ </div>
+ </div>
+ </div>
+
+ <div class="mt-10 text-center text-sm text-slate-400 max-w-lg mx-auto reveal">
+ This isn't a personal brand built on curated perfection. It's built on <span class="text-white">consistent daily practice</span>, honest reflection, and the courage to live publicly what most people only journal about privately.
+ </div>
+ </div>
+ </section>
+
+ <!-- SOCIAL PROOF / TESTIMONIALS -->
+ <section id="testimonials" class="section max-w-6xl mx-auto px-6 py-20">
+ <div class="text-center mb-12 reveal">
+ <div class="inline-block px-4 py-1 rounded-full bg-slate-900 border border-slate-700 text-amber-400 text-xs tracking-[2.5px] mb-4">SOCIAL PROOF</div>
+ <h2 class="heading-serif text-4xl md:text-5xl tracking-tighter mb-4">What People Say</h2>
+ <p class="max-w-md mx-auto text-slate-400">Real results from real collaboration</p>
+ </div>
+
+ <div class="grid md:grid-cols-3 gap-6">
+ <!-- Testimonial 1 -->
+ <div class="testimonial-card bg-slate-900 border border-slate-800 rounded-2xl p-8 reveal">
+ <div class="flex items-center gap-1 mb-6">
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ </div>
+ <p class="text-slate-300 mb-6 leading-relaxed">"Vashist helped me see around corners I didn't know existed. My decision-making clarity improved 10x after just three sessions. He has a rare gift for asking the question that unlocks everything."</p>
+ <div class="flex items-center gap-4">
+ <div class="w-12 h-12 bg-gradient-to-br from-amber-400/20 to-amber-600/20 rounded-full flex items-center justify-center border border-amber-400/30">
+ <span class="text-amber-400 font-semibold">SK</span>
+ </div>
+ <div>
+ <p class="text-slate-200 font-medium">Sarah K.</p>
+ <p class="text-slate-500 text-sm">Founder, DeFi Startup</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Testimonial 2 -->
+ <div class="testimonial-card bg-slate-900 border border-slate-800 rounded-2xl p-8 reveal">
+ <div class="flex items-center gap-1 mb-6">
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ </div>
+ <p class="text-slate-300 mb-6 leading-relaxed">"The product strategy insights were invaluable. He doesn't just understand Web3—he understands how to build products that matter. Our roadmap went from scattered to laser-focused in one session."</p>
+ <div class="flex items-center gap-4">
+ <div class="w-12 h-12 bg-gradient-to-br from-emerald-400/20 to-emerald-600/20 rounded-full flex items-center justify-center border border-emerald-400/30">
+ <span class="text-emerald-400 font-semibold">MR</span>
+ </div>
+ <div>
+ <p class="text-slate-200 font-medium">Michael R.</p>
+ <p class="text-slate-500 text-sm">CTO, Web3 Protocol</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Testimonial 3 -->
+ <div class="testimonial-card bg-slate-900 border border-slate-800 rounded-2xl p-8 reveal">
+ <div class="flex items-center gap-1 mb-6">
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+ </div>
+ <p class="text-slate-300 mb-6 leading-relaxed">"His keynote at our leadership retreat was transformative. The team is still talking about it months later. Vashist doesn't just present—he creates a shift in how people see their work and themselves."</p>
+ <div class="flex items-center gap-4">
+ <div class="w-12 h-12 bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-full flex items-center justify-center border border-blue-400/30">
+ <span class="text-blue-400 font-semibold">JL</span>
+ </div>
+ <div>
+ <p class="text-slate-200 font-medium">Jennifer L.</p>
+ <p class="text-slate-500 text-sm">VP Engineering, Tech Unicorn</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- ENHANCED OFFERINGS -->
+ <section id="offerings" class="section bg-slate-900 py-20 border-y border-slate-800">
+ <div class="max-w-6xl mx-auto px-6">
+ <div class="flex flex-col items-center text-center mb-12 reveal">
+ <div class="text-amber-400 text-xs tracking-[3px] mb-2">HOW WE CAN COLLABORATE</div>
+ <h2 class="heading-serif text-4xl md:text-5xl tracking-tighter">Work With Me</h2>
+ <p class="mt-3 max-w-md text-slate-400">Whether you're building in Web3, seeking deeper alignment in life/career, or want an investing partner who brings full presence.</p>
+ </div>
+
+ <div class="grid md:grid-cols-3 gap-6">
+ <!-- Offering 1: Coaching -->
+ <div class="offering-card group bg-slate-950 border border-slate-800 rounded-3xl p-8 flex flex-col relative overflow-hidden reveal">
+ <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 to-amber-600"></div>
+ <div class="flex-1">
+ <div class="inline-flex px-3 py-1 text-xs rounded-full bg-amber-400/10 text-amber-400 mb-4">COACHING</div>
+ <h3 class="text-2xl font-semibold tracking-tight mb-4">Conscious Leadership Coaching</h3>
+ <p class="text-slate-400 text-sm mb-6">For founders and executives ready to lead from clarity, not chaos.</p>
+ <ul class="space-y-3 text-sm text-slate-300 mb-6">
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> <span>1:1 sessions tailored to your challenges</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> <span>3-month minimum commitment</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> <span>Between-session support via WhatsApp</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> <span>Career transitions & personal philosophy</span></li>
+ </ul>
+ </div>
+ <div class="pt-6 mt-auto border-t border-slate-800">
+ <div class="flex items-baseline gap-1 mb-1">
+ <span class="text-3xl font-bold text-white">$500</span>
+ <span class="text-slate-500 text-sm">/session</span>
+ </div>
+ <p class="text-xs text-slate-500 mb-4">Or $5,000 for 12-session program</p>
+ <button onclick="openCalendly()" class="w-full px-6 py-3 bg-amber-400 hover:bg-amber-300 transition-colors text-slate-950 font-semibold rounded-xl flex items-center justify-center gap-x-2">
+ <span>Apply for Coaching</span>
+ <i class="fa-solid fa-arrow-right"></i>
+ </button>
+ <p class="text-xs text-slate-500 text-center mt-3">Limited to 5 clients per month</p>
+ </div>
+ </div>
+
+ <!-- Offering 2: Advisory -->
+ <div class="offering-card group bg-slate-950 border border-slate-800 rounded-3xl p-8 flex flex-col relative overflow-hidden reveal">
+ <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+ <div class="flex-1">
+ <div class="inline-flex px-3 py-1 text-xs rounded-full bg-emerald-400/10 text-emerald-400 mb-4">PRODUCT</div>
+ <h3 class="text-2xl font-semibold tracking-tight mb-4">Web3 Product Advisory</h3>
+ <p class="text-slate-400 text-sm mb-6">Strategic guidance for building products that matter in the decentralized future.</p>
+ <ul class="space-y-3 text-sm text-slate-300 mb-6">
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>dApp & protocol product roadmapping</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Tokenomics design aligned with user value</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Stakeholder alignment in DAOs</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Go-to-market & growth frameworks</span></li>
+ </ul>
+ </div>
+ <div class="pt-6 mt-auto border-t border-slate-800">
+ <div class="flex items-baseline gap-1 mb-1">
+ <span class="text-3xl font-bold text-white">$10K</span>
+ <span class="text-slate-500 text-sm">/month</span>
+ </div>
+ <p class="text-xs text-slate-500 mb-4">Retainer or project-based available</p>
+ <button onclick="openCalendly()" class="w-full px-6 py-3 bg-emerald-400 hover:bg-emerald-300 transition-colors text-slate-950 font-semibold rounded-xl flex items-center justify-center gap-x-2">
+ <span>Book Strategy Call</span>
+ <i class="fa-solid fa-arrow-right"></i>
+ </button>
+ <p class="text-xs text-slate-500 text-center mt-3">Free 30-minute discovery call</p>
+ </div>
+ </div>
+
+ <!-- Offering 3: Speaking -->
+ <div class="offering-card group bg-slate-950 border border-slate-800 rounded-3xl p-8 flex flex-col relative overflow-hidden reveal">
+ <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+ <div class="flex-1">
+ <div class="inline-flex px-3 py-1 text-xs rounded-full bg-blue-400/10 text-blue-400 mb-4">SPEAKING</div>
+ <h3 class="text-2xl font-semibold tracking-tight mb-4">Keynotes & Workshops</h3>
+ <p class="text-slate-400 text-sm mb-6">Inspire your team to think bigger and build better through conscious leadership.</p>
+ <ul class="space-y-3 text-sm text-slate-300 mb-6">
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> <span>60-90 minute keynotes</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> <span>Half-day interactive workshops</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> <span>Custom content for your audience</span></li>
+ <li class="flex gap-x-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> <span>Leadership retreat facilitation</span></li>
+ </ul>
+ </div>
+ <div class="pt-6 mt-auto border-t border-slate-800">
+ <div class="flex items-baseline gap-1 mb-1">
+ <span class="text-3xl font-bold text-white">$5K</span>
+ <span class="text-slate-500 text-sm">+</span>
+ </div>
+ <p class="text-xs text-slate-500 mb-4">Starting price, varies by scope</p>
+ <button onclick="openCalendly()" class="w-full px-6 py-3 bg-blue-400 hover:bg-blue-300 transition-colors text-slate-950 font-semibold rounded-xl flex items-center justify-center gap-x-2">
+ <span>Check Availability</span>
+ <i class="fa-solid fa-arrow-right"></i>
+ </button>
+ <p class="text-xs text-slate-500 text-center mt-3">Book 4+ weeks in advance</p>
+ </div>
+ </div>
+ </div>
+
+ <div class="text-center mt-10 reveal">
+ <p class="text-sm text-slate-400">Not sure where you fit? <button onclick="openCalendly()" class="text-amber-400 hover:underline">Let's have a conversation.</button></p>
+ </div>
+ </div>
+ </section>
+
+ <!-- PHILOSOPHY / DEEPER WHY -->
+ <section id="philosophy" class="section max-w-5xl mx-auto px-6 py-20">
+ <div class="max-w-3xl mx-auto">
+ <div class="text-center mb-12 reveal">
+ <div class="text-amber-400 text-xs tracking-[3px] mb-2">THE OPERATING SYSTEM</div>
+ <h2 class="heading-serif text-4xl md:text-5xl tracking-tighter">My Personal Philosophy</h2>
+ </div>
+
+ <div class="space-y-8 text-[15px] leading-relaxed reveal">
+ <div>
+ <h4 class="font-semibold text-lg mb-2 flex items-center gap-x-2"><i class="fa-solid fa-heart text-amber-400 w-5"></i> Health as the True Foundation</h4>
+ <p class="text-slate-300">A strong body and optimized energy create the conditions for clear thinking, creativity, presence, and resilience. Many "complex" problems become solvable when the vessel is cared for. This is non-negotiable daily practice.</p>
+ </div>
+
+ <div>
+ <h4 class="font-semibold text-lg mb-2 flex items-center gap-x-2"><i class="fa-solid fa-brain text-amber-400 w-5"></i> Discipline = Freedom & Self-Respect</h4>
+ <p class="text-slate-300">Being your own boss isn't about doing whatever you want. It's about doing what you said you would do — consistently. This builds unshakable self-trust and is one of the highest forms of spiritual practice.</p>
+ </div>
+
+ <div>
+ <h4 class="font-semibold text-lg mb-2 flex items-center gap-x-2"><i class="fa-solid fa-book text-amber-400 w-5"></i> Blending Ancient Wisdom with Modern Action</h4>
+ <p class="text-slate-300">I draw from the Bhagavad Gita, other spiritual traditions, biology, physics, and lived experience to form a personal worldview. God / higher awareness is real and personal. Religion can be structure; the direct experience is what transforms. Thoughts and words shape reality — choose them with care.</p>
+ </div>
+
+ <div>
+ <h4 class="font-semibold text-lg mb-2 flex items-center gap-x-2"><i class="fa-solid fa-globe text-amber-400 w-5"></i> Life in Phases + Intentional Living</h4>
+ <p class="text-slate-300">Life moves through seasons: focused building, chaos/breakthrough, integration, and sharing. Knowing which phase you're in changes everything. Live each day as a unit of blessing — with joy, gratitude, creativity, and awareness that you are here, now, in this cosmic miracle.</p>
+ </div>
+
+ <div>
+ <h4 class="font-semibold text-lg mb-2 flex items-center gap-x-2"><i class="fa-solid fa-hand-holding-heart text-amber-400 w-5"></i> Wealth as Aligned Freedom</h4>
+ <p class="text-slate-300">Money matters as a tool that reveals priorities and buys optionality. My aim is significant wealth (starting with $1M mindset in 2026) not as an end, but as fuel for a richer life: family, travel, creation, contribution, and protecting what matters. No spirituality without grounded resources in today's world.</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- INSIGHTS / WRITING -->
+ <section id="insights" class="section bg-slate-900 py-16 border-y border-slate-800">
+ <div class="max-w-5xl mx-auto px-6">
+ <div class="flex justify-between items-end mb-8 reveal">
+ <div>
+ <div class="text-amber-400 text-xs tracking-[3px] mb-1">THOUGHTS IN PUBLIC</div>
+ <h3 class="text-3xl font-semibold tracking-tight">Recent Insights & Reflections</h3>
+ </div>
+ <a href="#" class="hidden md:flex items-center text-sm text-amber-400 hover:text-amber-300">View all writings <i class="fa-solid fa-arrow-right ml-2"></i></a>
+ </div>
+
+ <div class="grid md:grid-cols-3 gap-6">
+ <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 reveal">
+ <div class="text-xs text-slate-500 mb-3">JAN 2026 • PERSONAL GROWTH</div>
+ <h4 class="font-semibold mb-3">What is your life and what game are you in?</h4>
+ <p class="text-sm text-slate-400 line-clamp-4">Stepping out of inherited games into intentional living. Health, discipline, a self-authored worldview, and the courage to choose your own mission in your 30s and 40s.</p>
+ <a href="#" class="text-xs text-amber-400 mt-4 inline-block">Read full reflection →</a>
+ </div>
+
+ <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 reveal">
+ <div class="text-xs text-slate-500 mb-3">DEC 2025 • WEALTH & MINDSET</div>
+ <h4 class="font-semibold mb-3">Wealth Strategy: Blockchain, Investment & Life Coaching</h4>
+ <p class="text-sm text-slate-400 line-clamp-4">The three-pillar approach: Transitioning into Web3 PM, strategic investing in the space I love, and building a coaching practice that funds freedom and impact.</p>
+ <a href="#" class="text-xs text-amber-400 mt-4 inline-block">Read the framework →</a>
+ </div>
+
+ <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 reveal">
+ <div class="text-xs text-slate-500 mb-3">ONGOING • AVIATION & LIFE</div>
+ <h4 class="font-semibold mb-3">The Pilot's Mindset Applied to Life & Business</h4>
+ <p class="text-sm text-slate-400 line-clamp-4">Checklists for clarity, staying calm in turbulence (literal and metaphorical), long-term vision from altitude, and the humility that comes from respecting forces bigger than yourself.</p>
+ <a href="#" class="text-xs text-amber-400 mt-4 inline-block">Explore the parallels →</a>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- FINAL CTA / CONNECT -->
+ <section id="connect" class="section max-w-4xl mx-auto px-6 py-20 text-center">
+ <h2 class="heading-serif text-4xl md:text-5xl tracking-tighter mb-4 reveal">Let's Build, Fly & Grow Together.</h2>
+ <p class="max-w-md mx-auto text-slate-300 mb-10 reveal">Whether you're a founder building in Web3, a professional ready for deeper alignment, or someone who resonates with intentional living — I'd love to connect.</p>
+
+ <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 reveal">
+ <button onclick="openCalendly()"
+ class="px-10 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold rounded-2xl flex items-center justify-center gap-x-3 text-lg transition-all active:scale-[0.985]">
+ <i class="fa-solid fa-calendar"></i>
+ <span>Book a Discovery Call</span>
+ </button>
+
+ <a href="mailto:hello@vashistrohit.com"
+ class="px-10 py-4 border border-slate-700 hover:bg-slate-900 rounded-2xl flex items-center justify-center gap-x-3 text-lg transition-all">
+ <i class="fa-solid fa-envelope"></i>
+ <span>Email Me Directly</span>
+ </a>
+ </div>
+
+ <div class="flex justify-center gap-x-6 text-sm reveal">
+ <a href="#" class="flex items-center gap-x-2 text-slate-400 hover:text-white"><i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span></a>
+ <a href="#" class="flex items-center gap-x-2 text-slate-400 hover:text-white"><i class="fa-brands fa-x-twitter"></i> <span>X / Twitter</span></a>
+ <a href="#" class="flex items-center gap-x-2 text-slate-400 hover:text-white"><i class="fa-brands fa-instagram"></i> <span>Instagram</span></a>
+ </div>
+
+ <div class="mt-16 text-[10px] text-slate-500 tracking-widest">© VASHIST ROHIT — ALL RIGHTS RESERVED. BUILT WITH INTENTION.</div>
+ </section>
+
+ <!-- CALENDLY EMBED -->
+ <div id="calendly-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+ <div class="bg-slate-900 rounded-2xl w-full max-w-4xl h-[80vh] relative">
+ <button onclick="closeCalendly()" class="absolute top-4 right-4 text-slate-400 hover:text-white z-10">
+ <i class="fa-solid fa-xmark text-2xl"></i>
+ </button>
+ <div id="calendly-inline-widget" class="w-full h-full rounded-2xl overflow-hidden"></div>
+ </div>
+ </div>
+
+ <!-- Calendly Script -->
+ <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+ <script>
+ // Mobile menu toggle
+ const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+ const mobileMenu = document.getElementById('mobile-menu');
+ const mobileMenuClose = document.getElementById('mobile-menu-close');
+ const mobileOverlay = document.getElementById('mobile-overlay');
+
+ function openMobileMenu() {
+ mobileMenu.classList.add('open');
+ mobileOverlay.classList.remove('hidden');
+ document.body.style.overflow = 'hidden';
+ }
+
+ function closeMobileMenu() {
+ mobileMenu.classList.remove('open');
+ mobileOverlay.classList.add('hidden');
+ document.body.style.overflow = '';
+ }
+
+ mobileMenuBtn.addEventListener('click', openMobileMenu);
+ mobileMenuClose.addEventListener('click', closeMobileMenu);
+ mobileOverlay.addEventListener('click', closeMobileMenu);
+
+ // Close mobile menu when clicking a link
+ mobileMenu.querySelectorAll('a').forEach(link => {
+ link.addEventListener('click', closeMobileMenu);
+ });
+
+ // Nav scroll effect
+ const nav = document.getElementById('nav');
+ window.addEventListener('scroll', () => {
+ if (window.scrollY > 50) {
+ nav.classList.add('nav-scrolled');
+ } else {
+ nav.classList.remove('nav-scrolled');
+ }
+ });
+
+ // Smooth scroll for anchor links
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+ anchor.addEventListener('click', function(e) {
+ const target = document.querySelector(this.getAttribute('href'));
+ if (target) {
+ e.preventDefault();
+ target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ }
+ });
+ });
+
+ // Scroll reveal animation
+ const revealElements = document.querySelectorAll('.reveal');
+ const revealObserver = new IntersectionObserver((entries) => {
+ entries.forEach(entry => {
+ if (entry.isIntersecting) {
+ entry.target.classList.add('active');
+ }
+ });
+ }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+ revealElements.forEach(el => revealObserver.observe(el));
+
+ // Stats animation
+ const statItems = document.querySelectorAll('.stat-item');
+ const statsObserver = new IntersectionObserver((entries) => {
+ entries.forEach((entry, index) => {
+ if (entry.isIntersecting) {
+ const delay = entry.target.dataset.delay || 0;
+ setTimeout(() => {
+ entry.target.classList.add('visible');
+ }, delay);
+ }
+ });
+ }, { threshold: 0.5 });
+
+ statItems.forEach(el => statsObserver.observe(el));
+
+ // Calendly functions
+ function openCalendly() {
+ const modal = document.getElementById('calendly-modal');
+ const widget = document.getElementById('calendly-inline-widget');
+ modal.classList.remove('hidden');
+ modal.classList.add('flex');
+ document.body.style.overflow = 'hidden';
+ 
+ // Initialize Calendly inline widget
+ if (window.Calendly) {
+ Calendly.initInlineWidget({
+ url: 'https://calendly.com/vashistrohit',
+ parentElement: widget,
+ prefill: {},
+ utm: {}
+ });
+ }
+ }
+
+ function closeCalendly() {
+ const modal = document.getElementById('calendly-modal');
+ const widget = document.getElementById('calendly-inline-widget');
+ modal.classList.add('hidden');
+ modal.classList.remove('flex');
+ document.body.style.overflow = '';
+ // Clear widget content
+ widget.innerHTML = '';
+ }
+
+ // Close Calendly modal on backdrop click
+ document.getElementById('calendly-modal').addEventListener('click', function(e) {
+ if (e.target === this) {
+ closeCalendly();
+ }
+ });
+
+ // Escape key to close modals
+ document.addEventListener('keydown', function(e) {
+ if (e.key === 'Escape') {
+ closeCalendly();
+ closeMobileMenu();
+ }
+ });
+ </script>
+</body>
+</html>
