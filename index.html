@@ -33,7 +33,7 @@
  .gold-accent { color: #D4A017; }
  .premium-shadow { box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
  
- /* Integration Cards with Hover Reveal */
+ /* Integration Cards — always visible content */
  .integration-card { 
  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
  position: relative;
@@ -43,21 +43,6 @@
  transform: translateY(-8px); 
  box-shadow: 0 20px 40px -10px rgba(212, 160, 23, 0.15);
  border-color: rgba(212, 160, 23, 0.5);
- }
- .integration-card .hover-reveal {
- opacity: 0;
- transform: translateY(10px);
- transition: all 0.3s ease;
- }
- .integration-card:hover .hover-reveal {
- opacity: 1;
- transform: translateY(0);
- }
- .integration-card .default-content {
- transition: all 0.3s ease;
- }
- .integration-card:hover .default-content {
- transform: translateY(-5px);
  }
  
  .nav-link { transition: color 0.2s ease; }
@@ -83,6 +68,10 @@
  from { opacity: 0; transform: translateY(10px); }
  to { opacity: 1; transform: translateY(0); }
  }
+ @keyframes float {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-6px); }
+ }
  .animate-fade-in-up {
  animation: fadeInUp 0.6s ease-out forwards;
  }
@@ -93,6 +82,8 @@
  .animate-delay-200 { animation-delay: 0.2s; }
  .animate-delay-300 { animation-delay: 0.3s; }
  .animate-delay-400 { animation-delay: 0.4s; }
+ .animate-delay-500 { animation-delay: 0.5s; }
+ .animate-delay-600 { animation-delay: 0.6s; }
  
  /* Scroll reveal */
  .reveal {
@@ -132,12 +123,12 @@
  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
  }
  
- /* Stats bar animation */
- .stat-item {
+ /* Stats in hero */
+ .hero-stat {
  opacity: 0;
  transform: translateY(20px);
  }
- .stat-item.visible {
+ .hero-stat.visible {
  animation: countUp 0.6s ease-out forwards;
  }
  </style>
@@ -193,11 +184,10 @@
  </div>
  <div class="flex flex-col gap-4">
  <a href="#about" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">About</a>
- <a href="#integration" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">The Integration</a>
- <a href="#offerings" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">Work With Me</a>
+ <a href="#proof" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">Work</a>
+ <a href="#offerings" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">Services</a>
  <a href="#philosophy" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">Philosophy</a>
  <a href="#insights" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">Insights</a>
- <a href="#testimonials" class="nav-link text-slate-200 hover:text-amber-400 py-2 border-b border-slate-700 transition-colors">Testimonials</a>
  <a href="#connect" class="nav-link text-slate-200 hover:text-amber-400 py-2 transition-colors">Get in Touch</a>
  </div>
  <button onclick="openCalendly()" class="w-full mt-6 px-6 py-3 bg-amber-400 hover:bg-amber-300 transition-colors text-slate-950 font-semibold rounded-full flex items-center justify-center gap-x-2">
@@ -210,122 +200,133 @@
  <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
  </nav>
 
- <!-- HERO -->
- <header class="pt-20 min-h-[100dvh] flex items-center relative overflow-hidden bg-[radial-gradient(#1e2937_0.8px,transparent_1px)] bg-[length:5px_5px]">
- <div class="max-w-5xl mx-auto px-6 pt-12 pb-20 text-center relative z-10">
- <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-700 mb-6 animate-fade-in">
- <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
- <span class="text-xs font-medium tracking-[2px] text-emerald-400">CURRENTLY: WEB3 PM • PILOT TRAINING • COACHING</span>
- </div>
+ <!-- HERO (with stats integrated) -->
+ <header class="pt-20 min-h-[100dvh] flex items-center relative overflow-hidden bg-slate-950">
+  <!-- Grid pattern -->
+  <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#1e2937 0.8px, transparent 1px); background-size: 5px 5px;"></div>
 
- <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter leading-[0.95] mb-4 animate-fade-in-up">
- Living Intentionally.<br>
- Building Boldly.<br>
- <span class="gold-accent">Flying Free.</span>
- </h1>
+  <!-- Gradient glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
- <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 mb-10 animate-fade-in-up animate-delay-100">
- Vashist Rohit — Web3 Product Manager, Private Pilot in training, Life Coach & Conscious Investor crafting a life of aligned impact, discipline, and freedom.
- </p>
+  <div class="max-w-5xl mx-auto px-6 pt-12 pb-24 text-center relative z-10 w-full">
 
- <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-200">
- <a href="#offerings"
- class="group px-8 py-4 bg-white text-slate-950 font-semibold rounded-2xl flex items-center justify-center gap-x-3 hover:bg-amber-50 transition-all text-lg">
- Explore How We Can Work Together
- <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
- </a>
- <a href="#about"
- class="px-8 py-4 border border-slate-700 hover:bg-slate-900 transition-all rounded-2xl flex items-center justify-center gap-x-3 text-lg">
- Discover My Story
- </a>
- </div>
+   <!-- Status badge -->
+   <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-700 mb-6 animate-fade-in">
+    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+    <span class="text-xs font-medium tracking-[2px] text-emerald-400">WEB3 PM • PILOT TRAINING • COACHING</span>
+   </div>
 
- <div class="mt-16 flex justify-center gap-x-8 text-xs tracking-widest text-slate-400 animate-fade-in-up animate-delay-300">
- <div>WEB3</div>
- <div>AVIATION</div>
- <div>COACHING</div>
- <div>INVESTING</div>
- </div>
- </div>
+   <!-- Headline -->
+   <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter leading-[0.95] mb-4 animate-fade-in-up">
+    Living Intentionally.<br>
+    Building Boldly.<br>
+    <span class="gold-accent">Flying Free.</span>
+   </h1>
 
- <!-- Subtle aviation/tech visual hint -->
- <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+   <!-- Subheadline -->
+   <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 mb-8 animate-fade-in-up animate-delay-100">
+    Vashist Rohit — Web3 Product Manager, Private Pilot in training, Life Coach & Conscious Investor crafting a life of aligned impact, discipline, and freedom.
+   </p>
+
+   <!-- SINGLE PRIMARY CTA + secondary text link -->
+   <div class="animate-fade-in-up animate-delay-200">
+    <button onclick="openCalendly()"
+     class="px-10 py-4 bg-amber-400 hover:bg-amber-300 transition-all text-slate-950 font-bold rounded-2xl flex items-center justify-center gap-x-3 text-lg mx-auto active:scale-[0.985] shadow-lg shadow-amber-400/20">
+     <i class="fa-solid fa-calendar-check"></i>
+     <span>Book a Free Discovery Call</span>
+    </button>
+    <div class="mt-3">
+     <a href="#proof"
+      class="text-sm text-slate-400 hover:text-amber-400 transition-colors underline underline-offset-4 decoration-slate-700 hover:decoration-amber-400/50">
+      Or explore my work first →
+     </a>
+    </div>
+   </div>
+
+   <!-- STATS integrated into hero -->
+   <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto animate-fade-in-up animate-delay-500">
+    <div class="hero-stat">
+     <div class="text-3xl md:text-4xl font-bold text-amber-400">10+</div>
+     <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+     <div class="text-3xl md:text-4xl font-bold text-amber-400">20+</div>
+     <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Products Shipped</div>
+    </div>
+    <div class="hero-stat">
+     <div class="text-3xl md:text-4xl font-bold text-amber-400">100s</div>
+     <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Coaching Hours</div>
+    </div>
+    <div class="hero-stat">
+     <div class="text-3xl md:text-4xl font-bold text-amber-400">10+</div>
+     <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Investment Deals</div>
+    </div>
+   </div>
+
+   <!-- Role badges -->
+   <div class="mt-8 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-sm text-slate-400 animate-fade-in-up animate-delay-600">
+    <div class="flex items-center gap-x-2"><i class="fa-solid fa-rocket text-amber-400"></i> <span>Web3 Product Leader</span></div>
+    <div class="flex items-center gap-x-2"><i class="fa-solid fa-plane text-amber-400"></i> <span>Private Pilot (Training)</span></div>
+    <div class="flex items-center gap-x-2"><i class="fa-solid fa-heart-pulse text-amber-400"></i> <span>Life Coach & Mentor</span></div>
+    <div class="flex items-center gap-x-2"><i class="fa-solid fa-chart-line text-amber-400"></i> <span>Conscious Investor & Builder</span></div>
+   </div>
+  </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none"></div>
  </header>
 
- <!-- STATS BAR -->
- <section id="stats" class="border-y border-slate-800 bg-slate-900/50 py-12">
- <div class="max-w-6xl mx-auto px-6">
- <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
- <div class="stat-item" data-delay="0">
- <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">10+</div>
- <div class="text-sm text-slate-400 uppercase tracking-wider">Years Experience</div>
- </div>
- <div class="stat-item" data-delay="100">
- <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">20+</div>
- <div class="text-sm text-slate-400 uppercase tracking-wider">Products Shipped</div>
- </div>
- <div class="stat-item" data-delay="200">
- <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">100s</div>
- <div class="text-sm text-slate-400 uppercase tracking-wider">Coaching Hours</div>
- </div>
- <div class="stat-item" data-delay="300">
- <div class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">10+</div>
- <div class="text-sm text-slate-400 uppercase tracking-wider">Investment Deals</div>
- </div>
- </div>
- </div>
- </section>
-
- <!-- TRUST / ROLES -->
- <div class="border-b border-slate-800 py-5">
- <div class="max-w-6xl mx-auto px-6">
- <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 text-sm text-slate-400">
- <div class="flex items-center gap-x-2"><i class="fa-solid fa-rocket text-amber-400"></i> <span>Web3 Product Leader</span></div>
- <div class="flex items-center gap-x-2"><i class="fa-solid fa-plane text-amber-400"></i> <span>Private Pilot (Training)</span></div>
- <div class="flex items-center gap-x-2"><i class="fa-solid fa-heart-pulse text-amber-400"></i> <span>Life Coach & Mentor</span></div>
- <div class="flex items-center gap-x-2"><i class="fa-solid fa-chart-line text-amber-400"></i> <span>Conscious Investor & Builder</span></div>
- </div>
- </div>
- </div>
-
- <!-- ABOUT / STORY -->
+ <!-- ABOUT / STORY (condensed) -->
  <section id="about" class="section max-w-5xl mx-auto px-6 py-20">
- <div class="grid md:grid-cols-12 gap-x-12 items-start">
- <div class="md:col-span-5">
- <div class="sticky top-24">
- <div class="uppercase tracking-[3px] text-xs text-amber-400 mb-3">THE JOURNEY SO FAR</div>
- <h2 class="heading-serif text-4xl md:text-5xl leading-none tracking-tighter">From Business Analyst<br>to Intentional<br>Multi-Creator.</h2>
+  <div class="grid md:grid-cols-12 gap-x-12 items-start">
+   <div class="md:col-span-5">
+    <div class="sticky top-24">
+     <div class="uppercase tracking-[3px] text-xs text-amber-400 mb-3">THE JOURNEY SO FAR</div>
+     <h2 class="heading-serif text-4xl md:text-5xl leading-none tracking-tighter">From Business Analyst<br>to Intentional<br>Multi-Creator.</h2>
 
- <div class="mt-8 flex items-center gap-x-4">
- <div class="flex -space-x-2">
- <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
- <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
- <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
- </div>
- <span class="text-sm text-slate-400">Trusted by builders and high-agency professionals in Web3 + tech.</span>
- </div>
- </div>
- </div>
+     <div class="mt-8 flex items-center gap-x-4">
+      <div class="flex -space-x-2">
+       <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
+       <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
+       <div class="w-8 h-8 bg-slate-700 rounded-full border border-slate-600"></div>
+      </div>
+      <span class="text-sm text-slate-400">Trusted by builders and high-agency professionals in Web3 + tech.</span>
+     </div>
+    </div>
+   </div>
 
- <div class="md:col-span-7 mt-10 md:mt-0 space-y-6 text-[15px] leading-relaxed text-slate-300">
- <p>I am Vashist Rohit. For years I played the games society and others set for me — chasing degrees, income, and external validation. They brought some success, but eventually felt heavy and misaligned. I stepped back, got radically honest, and began building a life I actually own.</p>
+   <div class="md:col-span-7 mt-10 md:mt-0 space-y-6 text-[15px] leading-relaxed text-slate-300">
+    <p>I'm Vashist Rohit. After years chasing degrees, income, and external validation — I stepped back, got radically honest, and started building a life I actually own. Today I operate at the intersection of <strong class="text-white">Web3 product leadership</strong>, <strong class="text-white">aviation discipline</strong>, <strong class="text-white">holistic coaching</strong>, and <strong class="text-white">conscious investing</strong>.</p>
 
- <p>Today I operate at the intersection of <strong class="text-white">cutting-edge technology</strong>, <strong class="text-white">aviation discipline</strong>, <strong class="text-white">holistic coaching</strong>, and <strong class="text-white">conscious wealth creation</strong>. I didn't arrive here by accident. Every step — from deep dives into the Bhagavad Gita and spiritual texts, to rigorous health optimization, 100+ books read and digested, daily discipline practices, and pursuing my Private Pilot License — has been intentional.</p>
+    <p>Every step has been intentional: from deep-diving the Bhagavad Gita and spiritual texts, to rigorous health optimization, 100+ books, daily discipline practices, and pursuing my Private Pilot License. My Business Analyst background gives me the analytical foundation; now I channel that into work that matters.</p>
 
- <p>My background as a Business Analyst gave me the analytical foundation. Now I channel that into <strong>Web3 Product Management</strong>, where I help teams build decentralized products that actually serve humans. I'm also training to become a licensed Private Pilot — an experience that sharpens focus, situational awareness, and long-term thinking in profound ways.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+     <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+      <div class="font-semibold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-layer-group text-amber-400 text-sm"></i> Product Leadership</div>
+      <p class="text-sm text-slate-400">Roadmap strategy, stakeholder alignment, and shipping Web3 products that serve real humans — not just speculation.</p>
+     </div>
+     <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+      <div class="font-semibold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-plane text-amber-400 text-sm"></i> Aviation Discipline</div>
+      <p class="text-sm text-slate-400">Training for my Private Pilot License sharpens situational awareness, calm under pressure, and long-term focus.</p>
+     </div>
+     <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+      <div class="font-semibold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-hand-holding-heart text-amber-400 text-sm"></i> Life Coaching</div>
+      <p class="text-sm text-slate-400">I help founders and tech leaders build unshakeable habits, clarify purpose, and align career moves with deeper values.</p>
+     </div>
+     <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+      <div class="font-semibold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-coins text-amber-400 text-sm"></i> Conscious Investing</div>
+      <p class="text-sm text-slate-400">Deploying capital into Web3 and blockchain projects where returns meet real-world impact. Wealth as a tool for freedom.</p>
+     </div>
+    </div>
 
- <p>As a Life Coach, I work with ambitious individuals (especially in tech and Web3) who want more than surface-level success. I help them build unshakeable habits, clarify their personal philosophy, protect their energy, and align career moves with their deeper values and purpose.</p>
-
- <p>My investing work focuses on Web3 and blockchain projects that combine strong fundamentals with real-world impact. Wealth, to me, is a tool for freedom — the freedom to live fully, support family and community, travel, create, and give back.</p>
-
- <div class="pt-4 border-t border-slate-800">
- <p class="italic text-slate-400">"Money is an infinite game. The game I'm playing is becoming the most valuable node in networks that matter—health, wealth, relationships, and spirituality. Aligned abundance follows naturally."</p>
- </div>
- </div>
- </div>
+    <div class="pt-4 border-t border-slate-800">
+     <p class="italic text-slate-400">"Money is an infinite game. I'm becoming the most valuable node in networks that matter — health, wealth, relationships, and spirituality. Aligned abundance follows naturally."</p>
+    </div>
+   </div>
+  </div>
  </section>
 
- <!-- THE INTEGRATION - ENHANCED CARDS -->
+ <!-- THE INTEGRATION - VISIBLE CONTENT (no hover reveal) -->
  <section id="integration" class="section bg-slate-900 py-20 border-y border-slate-800">
  <div class="max-w-6xl mx-auto px-6">
  <div class="text-center mb-12 reveal">
@@ -335,65 +336,57 @@
  </div>
 
  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
- <!-- Card 1: Product Architect -->
- <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
- <div class="default-content">
- <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
- <i class="fa-solid fa-layer-group text-2xl"></i>
- </div>
- <h4 class="font-semibold text-xl mb-3">Product Architect</h4>
- <p class="text-slate-400 text-[14px] mb-4">Building decentralized systems that actually work. 10+ years shipping products from 0→1.</p>
- </div>
- <div class="hover-reveal pt-4 border-t border-slate-800">
- <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
- <p class="text-sm text-slate-300">Strategic product thinking that cuts through complexity. I help you build what matters, not just what ships.</p>
- </div>
- </div>
+  <!-- Card 1: Product Architect -->
+  <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+   <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+    <i class="fa-solid fa-layer-group text-2xl"></i>
+   </div>
+   <h4 class="font-semibold text-xl mb-3">Product Architect</h4>
+   <p class="text-slate-400 text-[14px] mb-4">Building decentralized systems that actually work. 10+ years shipping products from 0→1.</p>
+   <div class="pt-4 border-t border-slate-800">
+    <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you</p>
+    <p class="text-sm text-slate-300">Strategic product thinking that cuts through complexity. I help you build what matters, not just what ships.</p>
+   </div>
+  </div>
 
- <!-- Card 2: Perspective Engineer -->
- <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
- <div class="default-content">
- <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
- <i class="fa-solid fa-plane-up text-2xl"></i>
- </div>
- <h4 class="font-semibold text-xl mb-3">Perspective Engineer</h4>
- <p class="text-slate-400 text-[14px] mb-4">The cockpit taught me what boardrooms couldn't: clarity under pressure, systems thinking, and the value of altitude.</p>
- </div>
- <div class="hover-reveal pt-4 border-t border-slate-800">
- <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
- <p class="text-sm text-slate-300">Calm decision-making under uncertainty. The ability to see the big picture while managing critical details.</p>
- </div>
- </div>
+  <!-- Card 2: Perspective Engineer -->
+  <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+   <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+    <i class="fa-solid fa-plane-up text-2xl"></i>
+   </div>
+   <h4 class="font-semibold text-xl mb-3">Perspective Engineer</h4>
+   <p class="text-slate-400 text-[14px] mb-4">The cockpit taught me what boardrooms couldn't: clarity under pressure, systems thinking, and the value of altitude.</p>
+   <div class="pt-4 border-t border-slate-800">
+    <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you</p>
+    <p class="text-sm text-slate-300">Calm decision-making under uncertainty. The ability to see the big picture while managing critical details.</p>
+   </div>
+  </div>
 
- <!-- Card 3: Transformation Partner -->
- <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
- <div class="default-content">
- <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
- <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
- </div>
- <h4 class="font-semibold text-xl mb-3">Transformation Partner</h4>
- <p class="text-slate-400 text-[14px] mb-4">I don't give advice—I help you hear your own wisdom. Hundreds of hours coaching founders and executives.</p>
- </div>
- <div class="hover-reveal pt-4 border-t border-slate-800">
- <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
- <p class="text-sm text-slate-300">Deep clarity on what you actually want. A mirror for your blind spots and an accelerator for your growth.</p>
- </div>
- </div>
+  <!-- Card 3: Transformation Partner -->
+  <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+   <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+    <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
+   </div>
+   <h4 class="font-semibold text-xl mb-3">Transformation Partner</h4>
+   <p class="text-slate-400 text-[14px] mb-4">I don't give advice — I help you hear your own wisdom. Hundreds of hours coaching founders and executives.</p>
+   <div class="pt-4 border-t border-slate-800">
+    <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you</p>
+    <p class="text-sm text-slate-300">Deep clarity on what you actually want. A mirror for your blind spots and an accelerator for your growth.</p>
+   </div>
+  </div>
 
- <!-- Card 4: Capital Alchemist -->
- <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
- <div class="default-content">
- <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
- <i class="fa-solid fa-coins text-2xl"></i>
- </div>
- <h4 class="font-semibold text-xl mb-3">Capital Alchemist</h4>
- <p class="text-slate-400 text-[14px] mb-4">Deploying capital where returns meet impact. Focus: Web3 infrastructure, regenerative tech, human potential.</p>
- </div>
- <div class="hover-reveal pt-4 border-t border-slate-800">
- <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you →</p>
- <p class="text-sm text-slate-300">Access to aligned capital and strategic guidance. Investment relationships built on shared values, not just returns.</p>
- </div>
- </div>
+  <!-- Card 4: Capital Alchemist -->
+  <div class="integration-card bg-slate-950 border border-slate-800 rounded-3xl p-7 reveal">
+   <div class="w-12 h-12 flex items-center justify-center bg-amber-400/10 text-amber-400 rounded-2xl mb-6">
+    <i class="fa-solid fa-coins text-2xl"></i>
+   </div>
+   <h4 class="font-semibold text-xl mb-3">Capital Alchemist</h4>
+   <p class="text-slate-400 text-[14px] mb-4">Deploying capital where returns meet impact. Focus: Web3 infrastructure, regenerative tech, human potential.</p>
+   <div class="pt-4 border-t border-slate-800">
+    <p class="text-xs text-amber-400 uppercase tracking-wider mb-2">How this serves you</p>
+    <p class="text-sm text-slate-300">Access to aligned capital and strategic guidance. Investment relationships built on shared values, not just returns.</p>
+   </div>
+  </div>
  </div>
 
  <div class="mt-10 text-center text-sm text-slate-400 max-w-lg mx-auto reveal">
@@ -524,6 +517,12 @@
  <h4 class="font-semibold text-lg mb-3">Better Alignment</h4>
  <p class="text-slate-400 text-sm leading-relaxed">Improved stakeholder communication and team cohesion around shared goals.</p>
  </div>
+ </div> <div class="w-12 h-12 flex items-center justify-center bg-purple-400/10 text-purple-400 rounded-2xl mb-6">
+ <i class="fa-solid fa-handshake text-2xl"></i>
+ </div>
+ <h4 class="font-semibold text-lg mb-3">Better Alignment</h4>
+ <p class="text-slate-400 text-sm leading-relaxed">Improved stakeholder communication and team cohesion around shared goals.</p>
+ </div>
  </div>
  </section>
 
@@ -543,7 +542,11 @@
  <div class="flex-1">
  <div class="inline-flex px-3 py-1 text-xs rounded-full bg-amber-400/10 text-amber-400 mb-4">COACHING</div>
  <h3 class="text-2xl font-semibold tracking-tight mb-4">Conscious Leadership Coaching</h3>
- <p class="text-slate-400 text-sm mb-6">For founders and executives ready to lead from clarity, not chaos.</p>
+ <p class="text-slate-400 text-sm mb-2">For founders and executives ready to lead from clarity, not chaos.</p>
+ <div class="flex flex-wrap gap-2 mb-5">
+ <span class="text-[11px] px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-300 border border-amber-400/20">Best for: Founders / CEOs</span>
+ <span class="text-[11px] px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-300 border border-amber-400/20">3–6 month commitment</span>
+ </div>
  <ul class="space-y-3 text-sm text-slate-300 mb-6">
  <li class="flex gap-x-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> <span>1:1 sessions tailored to your challenges</span></li>
  <li class="flex gap-x-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> <span>3-month minimum commitment</span></li>
@@ -571,7 +574,11 @@
  <div class="flex-1">
  <div class="inline-flex px-3 py-1 text-xs rounded-full bg-emerald-400/10 text-emerald-400 mb-4">PRODUCT</div>
  <h3 class="text-2xl font-semibold tracking-tight mb-4">Web3 Product Advisory</h3>
- <p class="text-slate-400 text-sm mb-6">Strategic guidance for building products that matter in the decentralized future.</p>
+ <p class="text-slate-400 text-sm mb-2">Strategic guidance for building products that matter in the decentralized future.</p>
+ <div class="flex flex-wrap gap-2 mb-5">
+ <span class="text-[11px] px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Best for: Web3 Teams</span>
+ <span class="text-[11px] px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Early-stage to scaling</span>
+ </div>
  <ul class="space-y-3 text-sm text-slate-300 mb-6">
  <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>dApp & protocol product roadmapping</span></li>
  <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Tokenomics design aligned with user value</span></li>
@@ -599,7 +606,11 @@
  <div class="flex-1">
  <div class="inline-flex px-3 py-1 text-xs rounded-full bg-blue-400/10 text-blue-400 mb-4">SPEAKING</div>
  <h3 class="text-2xl font-semibold tracking-tight mb-4">Keynotes & Workshops</h3>
- <p class="text-slate-400 text-sm mb-6">Inspire your team to think bigger and build better through conscious leadership.</p>
+ <p class="text-slate-400 text-sm mb-2">Inspire your team to think bigger and build better through conscious leadership.</p>
+ <div class="flex flex-wrap gap-2 mb-5">
+ <span class="text-[11px] px-2.5 py-1 rounded-full bg-blue-400/10 text-blue-300 border border-blue-400/20">Best for: Conferences / Retreats</span>
+ <span class="text-[11px] px-2.5 py-1 rounded-full bg-blue-400/10 text-blue-300 border border-blue-400/20">60–90 min or half-day</span>
+ </div>
  <ul class="space-y-3 text-sm text-slate-300 mb-6">
  <li class="flex gap-x-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> <span>60-90 minute keynotes</span></li>
  <li class="flex gap-x-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> <span>Half-day interactive workshops</span></li>
@@ -877,20 +888,17 @@
 
  revealElements.forEach(el => revealObserver.observe(el));
 
- // Stats animation
- const statItems = document.querySelectorAll('.stat-item');
- const statsObserver = new IntersectionObserver((entries) => {
- entries.forEach((entry, index) => {
+ // Hero stats animation (stats built into hero)
+ const heroStats = document.querySelectorAll('.hero-stat');
+ const heroStatsObserver = new IntersectionObserver((entries) => {
+ entries.forEach(entry => {
  if (entry.isIntersecting) {
- const delay = entry.target.dataset.delay || 0;
- setTimeout(() => {
  entry.target.classList.add('visible');
- }, delay);
  }
  });
  }, { threshold: 0.5 });
 
- statItems.forEach(el => statsObserver.observe(el));
+ heroStats.forEach(el => heroStatsObserver.observe(el));
 
  // Calendly functions
  function openCalendly() {
@@ -937,4 +945,5 @@
  });
  </script>
 </body>
+
 </html>
