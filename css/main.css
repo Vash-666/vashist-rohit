@@ -1,0 +1,616 @@
+/* ============================================
+   VASH REBRAND — MAIN STYLES
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    /* Colors */
+    --sandstone: #D4A574;
+    --indigo: #1A1B3A;
+    --saffron: #FF9933;
+    --marble: #F5F5F0;
+    --charcoal: #2A2A2A;
+    --mist: #E8E8E3;
+    --deep-black: #0A0A0F;
+    
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 32px;
+    --space-lg: 64px;
+    --space-xl: 128px;
+    
+    /* Typography */
+    --font-editorial: 'Georgia', 'Times New Roman', serif;
+    --font-grotesk: 'Space Grotesk', 'Inter', sans-serif;
+    
+    /* Easing */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-slow: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-grotesk);
+    background-color: var(--indigo);
+    color: var(--marble);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Typography Base */
+h1, h2, h3 {
+    font-family: var(--font-editorial);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.progress-bar.visible {
+    opacity: 1;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--sandstone);
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* ============================================
+   ROOM BASE
+   ============================================ */
+.room {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Texture Overlays */
+.texture-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 27, 58, 0.3) 0%,
+        rgba(26, 27, 58, 0.1) 50%,
+        rgba(26, 27, 58, 0.4) 100%
+    );
+    pointer-events: none;
+}
+
+/* ============================================
+   ROOM 1: THE PORTAL
+   ============================================ */
+.portal-room {
+    background: var(--indigo);
+    justify-content: center;
+    align-items: center;
+}
+
+.portal-texture {
+    position: absolute;
+    inset: 0;
+    background: 
+        url('../assets/textures/texture-01.svg'),
+        radial-gradient(ellipse at 30% 20%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(255, 153, 51, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #1A1B3A 0%, #252744 50%, #1A1B3A 100%);
+    background-size: cover, auto, auto, auto;
+    animation: portalDrift 20s ease-in-out infinite;
+}
+
+@keyframes portalDrift {
+    0%, 100% { transform: scale(1) translate(0, 0); }
+    25% { transform: scale(1.05) translate(-1%, -1%); }
+    50% { transform: scale(1) translate(1%, 0); }
+    75% { transform: scale(1.03) translate(0, 1%); }
+}
+
+.portal-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    opacity: 0;
+}
+
+.portal-name {
+    font-size: clamp(48px, 10vw, 96px);
+    letter-spacing: 0.15em;
+    color: var(--marble);
+    margin-bottom: var(--space-md);
+}
+
+.portal-name .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.portal-tagline {
+    font-family: var(--font-grotesk);
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sandstone);
+    opacity: 0;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    opacity: 0;
+}
+
+.scroll-text {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sandstone);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--sandstone), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ============================================
+   ROOM 2: AI & WEB3
+   ============================================ */
+.tech-room {
+    background: var(--indigo);
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.tech-texture {
+    position: relative;
+    background: 
+        url('../assets/textures/texture-02.svg'),
+        linear-gradient(45deg, rgba(26, 27, 58, 0.9) 0%, rgba(26, 27, 58, 0.7) 100%);
+    background-size: cover, auto;
+}
+
+.tech-content {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+}
+
+.tech-headline {
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--marble);
+    margin-bottom: var(--space-md);
+    line-height: 1.15;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.tech-subhead {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--sandstone);
+    margin-bottom: var(--space-md);
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.tech-body {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: rgba(245, 245, 240, 0.8);
+    line-height: 1.7;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* ============================================
+   ROOM 3: THE PIVOT
+   ============================================ */
+.pivot-room {
+    background: var(--indigo);
+    justify-content: center;
+    align-items: center;
+    min-height: 150vh;
+}
+
+.pivot-gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+        url('../assets/textures/texture-03.svg'),
+        linear-gradient(
+            180deg,
+            var(--indigo) 0%,
+            #252744 30%,
+            rgba(212, 165, 116, 0.2) 60%,
+            rgba(212, 165, 116, 0.3) 80%,
+            var(--sandstone) 100%
+        );
+    background-size: cover, auto;
+}
+
+.pivot-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+.pivot-line-1,
+.pivot-line-2 {
+    font-family: var(--font-editorial);
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.3;
+    color: var(--marble);
+}
+
+.pivot-line-1 {
+    margin-bottom: var(--space-xl);
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.pivot-line-2 {
+    color: var(--indigo);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* ============================================
+   ROOM 4: LIFE COACH
+   ============================================ */
+.coach-room {
+    background: var(--sandstone);
+    display: grid;
+    grid-template-columns: 45% 55%;
+    min-height: 120vh;
+}
+
+.coach-texture {
+    position: relative;
+    background: 
+        url('../assets/textures/texture-04.svg'),
+        linear-gradient(135deg, rgba(212, 165, 116, 0.3) 0%, rgba(255, 153, 51, 0.2) 100%);
+    background-size: cover, auto;
+    background-blend-mode: overlay, normal;
+    opacity: 0.8;
+}
+
+.coach-content {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 650px;
+}
+
+.coach-headline {
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--indigo);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.coach-subhead {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: rgba(26, 27, 58, 0.8);
+    margin-bottom: var(--space-md);
+    font-weight: 400;
+    opacity: 0;
+}
+
+.coach-body {
+    font-size: clamp(15px, 1.4vw, 17px);
+    color: rgba(26, 27, 58, 0.7);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+    opacity: 0;
+}
+
+.coach-quote {
+    border-left: 2px solid var(--saffron);
+    padding-left: var(--space-md);
+    font-style: italic;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.coach-quote p {
+    font-family: var(--font-editorial);
+    font-size: clamp(16px, 1.6vw, 19px);
+    color: rgba(26, 27, 58, 0.85);
+    line-height: 1.5;
+}
+
+/* ============================================
+   ROOM 5: PILOT
+   ============================================ */
+.pilot-room {
+    background: var(--indigo);
+    min-height: 100vh;
+    align-items: flex-end;
+    padding-bottom: var(--space-xl);
+}
+
+.pilot-texture {
+    position: absolute;
+    inset: 0;
+    background: 
+        url('../assets/textures/texture-05.svg'),
+        linear-gradient(to bottom, rgba(26, 27, 58, 0.2) 0%, rgba(26, 27, 58, 0.6) 100%);
+    background-size: cover, auto;
+}
+
+.pilot-content {
+    position: relative;
+    z-index: 10;
+    padding: var(--space-xl);
+    max-width: 600px;
+}
+
+.pilot-headline {
+    font-size: clamp(48px, 8vw, 72px);
+    color: var(--marble);
+    margin-bottom: var(--space-sm);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.pilot-subhead {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--sandstone);
+    margin-bottom: var(--space-md);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0;
+}
+
+.pilot-body {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: rgba(245, 245, 240, 0.85);
+    line-height: 1.7;
+    font-weight: 300;
+    opacity: 0;
+}
+
+/* ============================================
+   ROOM 6: THE SIGNAL
+   ============================================ */
+.signal-room {
+    background: var(--deep-black);
+    min-height: 180vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.investment-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-xl);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.investment-headline {
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--marble);
+    margin-bottom: var(--space-md);
+    line-height: 1.15;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.investment-subhead {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--sandstone);
+    margin-bottom: var(--space-md);
+    font-weight: 300;
+    opacity: 0;
+}
+
+.investment-body {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: rgba(245, 245, 240, 0.75);
+    line-height: 1.7;
+    font-weight: 300;
+    opacity: 0;
+}
+
+.the-signal {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-xl);
+    text-align: center;
+    background: 
+        url('../assets/textures/texture-06.svg'),
+        linear-gradient(to bottom, var(--deep-black) 0%, #050508 100%);
+    background-size: cover, auto;
+}
+
+.signal-text {
+    font-size: clamp(16px, 2vw, 20px);
+    color: rgba(245, 245, 240, 0.6);
+    margin-bottom: var(--space-md);
+    font-weight: 300;
+    opacity: 0;
+}
+
+.signal-email {
+    font-family: var(--font-editorial);
+    font-size: clamp(24px, 4vw, 42px);
+    color: var(--sandstone);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+    opacity: 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.signal-email::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--saffron);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-out);
+}
+
+.signal-email:hover {
+    color: var(--saffron);
+}
+
+.signal-email:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.signal-note {
+    font-size: clamp(13px, 1.5vw, 16px);
+    color: rgba(245, 245, 240, 0.4);
+    font-style: italic;
+    opacity: 0;
+}
+
+/* Email glow animation */
+@keyframes emailGlow {
+    0%, 100% { text-shadow: 0 0 20px rgba(212, 165, 116, 0.2); }
+    50% { text-shadow: 0 0 40px rgba(212, 165, 116, 0.4); }
+}
+
+.signal-email.visible {
+    animation: emailGlow 4s ease-in-out infinite;
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+@media (max-width: 768px) {
+    /* Mobile: Stack all layouts */
+    .tech-room,
+    .coach-room {
+        grid-template-columns: 1fr;
+        grid-template-rows: 40vh 60vh;
+    }
+    
+    .tech-texture,
+    .coach-texture {
+        min-height: 40vh;
+    }
+    
+    .tech-content,
+    .coach-content {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .pilot-room {
+        align-items: center;
+        padding-bottom: 0;
+    }
+    
+    .pilot-content {
+        padding: var(--space-lg) var(--space-md);
+        text-align: center;
+    }
+    
+    .portal-content {
+        padding: var(--space-md);
+    }
+    
+    .pivot-content {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .investment-section,
+    .the-signal {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    /* Reduce motion on mobile */
+    .portal-texture {
+        animation: none;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .portal-texture,
+    .scroll-line {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --sandstone: #E8C4A0;
+        --marble: #FFFFFF;
+    }
+}
