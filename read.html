@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#050505">
+    <title>Read — Vash | Life Coach & Writer</title>
+    <meta name="description" content="Essays on becoming a high-leverage node, life frameworks, and intentional living. Written by Vash — Life Coach, Builder, Pilot, Investor.">
+    
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-card: #0a0a0a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a3a3a3;
+            --text-muted: #737373;
+            --accent-gold: #c9a227;
+            --accent-sage: #7c9a8e;
+            --border: rgba(255,255,255,0.08);
+            --reading-width: 680px;
+        }
+        
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Reading font stack for body text */
+        .prose {
+            font-size: 19px;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+        
+        @media (max-width: 640px) {
+            .prose {
+                font-size: 18px;
+                line-height: 1.75;
+            }
+        }
+        
+        /* iPhone 12/13/14 Pro optimization */
+        @media (max-width: 390px) {
+            .prose {
+                font-size: 17px;
+                line-height: 1.7;
+            }
+        }
+        
+        .prose p {
+            margin-bottom: 1.5em;
+            letter-spacing: 0.01em;
+        }
+        
+        .prose h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.5em;
+            letter-spacing: -0.02em;
+        }
+        
+        @media (min-width: 640px) {
+            .prose h1 {
+                font-size: 36px;
+            }
+        }
+        
+        .prose h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 2em;
+            margin-bottom: 0.75em;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
+        
+        @media (min-width: 640px) {
+            .prose h2 {
+                font-size: 26px;
+            }
+        }
+        
+        .prose h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 1.75em;
+            margin-bottom: 0.5em;
+            color: var(--accent-gold);
+        }
+        
+        .prose blockquote {
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 1.25em;
+            margin: 2em 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .prose ul, .prose ol {
+            margin: 1.5em 0;
+            padding-left: 1.5em;
+        }
+        
+        .prose li {
+            margin-bottom: 0.75em;
+            position: relative;
+        }
+        
+        .prose ul li::marker {
+            color: var(--accent-gold);
+        }
+        
+        /* Article card styles */
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .article-card:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Reading progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        
+        /* Reading time badge */
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            background: rgba(201, 162, 39, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+        
+        /* Theme badge */
+        .theme-badge {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+        }
+        
+        /* Back button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        
+        .back-btn:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        body::-webkit-scrollbar {
+            width: 0px;
+        }
+        
+        /* Article list animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Selection color */
+        ::selection {
+            background: rgba(201, 162, 39, 0.3);
+            color: var(--text-primary);
+        }
+        
+        /* Focus styles for accessibility */
+        a:focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+        
+        /* Article divider */
+        .article-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+            margin: 3em 0;
+        }
+        
+        /* Pull quote */
+        .pull-quote {
+            font-size: 22px;
+            line-height: 1.5;
+            font-style: italic;
+            color: var(--accent-gold);
+            text-align: center;
+            margin: 2em 0;
+            padding: 0 1em;
+        }
+        
+        @media (min-width: 640px) {
+            .pull-quote {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050505]/95 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between">
+            <a href="index.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+                <span>Back</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center">
+                    <span class="text-white/60 text-[8px] font-medium">V</span>
+                </div>
+                <span class="font-medium text-sm tracking-tight">Vash</span>
+            </div>
+            <div class="w-12"></div> <!-- Spacer for balance -->
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="pt-20 pb-24">
+        <!-- Article List View (Default) -->
+        <div id="articleList" class="max-w-2xl mx-auto px-5">
+            <!-- Header -->
+            <header class="mb-10 animate-in">
+                <div class="theme-badge mb-3">Life Coach • Essays</div>
+                <h1 class="font-['Inter'] text-3xl font-semibold tracking-tight mb-3">Read My Writing</h1>
+                <p class="text-[#a3a3a3] text-lg leading-relaxed">
+                    Essays on becoming a high-leverage node, life frameworks, and intentional living. 
+                    Written for the part of you that's tired of noise and hungry for alignment.
+                </p>
+            </header>
+            
+            <!-- Articles -->
+            <div class="space-y-5">
+                <!-- Article 1 -->
+                <article class="article-card p-6 cursor-pointer animate-in" style="animation-delay: 0.1s" onclick="showArticle('network')">
+                    <div class="flex items-start justify-between gap-4 mb-3">
+                        <div class="reading-time">
+                            <i class="fa-regular fa-clock text-xs"></i>
+                            <span>6 min read</span>
+                        </div>
+                        <span class="text-xs text-[#737373]">Jun 16, 2026</span>
+                    </div>
+                    <h2 class="font-['Inter'] text-xl font-semibold mb-3 leading-tight group-hover:text-[#c9a227] transition-colors">
+                        You and Your Network
+                    </h2>
+                    <p class="text-[#a3a3a3] text-base leading-relaxed mb-4">
+                        You're running a very specific kind of life strategy: becoming a node—not just a person consuming the world, but a person who processes reality into leverage.
+                    </p>
+                    <div class="flex items-center gap-2 text-[#c9a227] text-sm font-medium">
+                        <span>Read essay</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="article-card p-6 cursor-pointer animate-in" style="animation-delay: 0.2s" onclick="showArticle('levels')">
+                    <div class="flex items-start justify-between gap-4 mb-3">
+                        <div class="reading-time">
+                            <i class="fa-regular fa-clock text-xs"></i>
+                            <span>8 min read</span>
+                        </div>
+                        <span class="text-xs text-[#737373]">Jun 16, 2026</span>
+                    </div>
+                    <h2 class="font-['Inter'] text-xl font-semibold mb-3 leading-tight">
+                        The Levels of Life Framework
+                    </h2>
+                    <p class="text-[#a3a3a3] text-base leading-relaxed mb-4">
+                        A clear mirror for where you stand — and how to move forward with intention. Life has three natural stages. You don't choose the level emotionally — you land in one based on your current reality.
+                    </p>
+                    <div class="flex items-center gap-2 text-[#c9a227] text-sm font-medium">
+                        <span>Read essay</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Footer note -->
+            <div class="mt-12 text-center animate-in" style="animation-delay: 0.3s">
+                <p class="text-[#737373] text-sm">
+                    New essays published monthly.<br>
+                    <a href="mailto:rohit.vashist@live.com" class="text-[#c9a227] hover:underline">Subscribe for updates</a>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Article Content Views (Hidden by default) -->
+        
+        <!-- Article: You and Your Network -->
+        <article id="article-network" class="hidden max-w-2xl mx-auto px-5">
+            <div class="mb-8">
+                <div class="reading-time mb-4">
+                    <i class="fa-regular fa-clock text-xs"></i>
+                    <span>6 min read</span>
+                </div>
+                <h1 class="font-['Inter'] text-3xl sm:text-4xl font-semibold tracking-tight mb-4">
+                    You and Your Network
+                </h1>
+                <p class="text-[#a3a3a3] text-lg italic">
+                    Becoming a node in a networked world
+                </p>
+            </div>
+            
+            <div class="prose">
+                <p>You're running a very specific kind of life strategy: becoming a node—not just a person consuming the world, but a person who processes reality into leverage.</p>
+                
+                <p>A node is not loud. A node is useful. It sits in the network with strong signal, clear values, and consistent output. It absorbs information, metabolizes it into insight, turns insight into artifacts, and then uses those artifacts to create trust, opportunity, and optionality. In a society shaped by incentives, media, and accelerating AI, the node isn't the person who reacts fastest—it's the person who thinks deepest, ships cleanly, and compounds quietly.</p>
+                
+                <p>But to become that kind of node, you need something stronger than motivation: you need a loop.</p>
+                
+                <h2>The Loop: how a human becomes leverage</h2>
+                
+                <p>Your loop is simple in structure but powerful in consequence:</p>
+                
+                <p>You read to acquire frameworks—not entertainment, not noise, not "more information," but models that change how you decide.</p>
+                
+                <p>Then you write to digest—because writing is where ideas stop being borrowed and start becoming yours.</p>
+                
+                <p>Then you publish to signal—because reputation is built by consistent proof, not private intention.</p>
+                
+                <p>Then you build to scale—because code, templates, and systems turn a single insight into an asset.</p>
+                
+                <p>Then you distribute—because the network can't reward what it never sees.</p>
+                
+                <p>This is not hustle. It's alchemy: turning input into output, and output into compounding advantage.</p>
+                
+                <p>The loop is the engine. But the engine needs a chassis—something that keeps it aligned and prevents it from becoming self-destructive. That's where the private and the public split becomes sacred.</p>
+                
+                <h2>Private: the forge (where signal is born)</h2>
+                
+                <p>The private side is where you protect your depth.</p>
+                
+                <p>Private is where you train the foundations: health, focus, discipline, attention. Private is where you can be messy, uncertain, unfinished. This is where you run experiments without performance pressure. This is where you admit the truth: there are things your mind acknowledges and things it avoids—and you write them down anyway, because you're building self-knowledge, not a persona.</p>
+                
+                <p>Private is where you build your inner order before you enter the outer one.</p>
+                
+                <p>In the private world, the question is: "What is real for me—what is my energy, my principles, my direction?"</p>
+                
+                <p>Because if you don't answer that privately, the public world answers it for you—with algorithms, incentives, and other people's games.</p>
+                
+                <p>Private is also where you defend your attention. In your model, attention is the ultimate currency: whatever takes it, shapes you. And modern systems are designed to hijack it. So your private practice is an attention defense system: sleep, training, reading blocks, writing blocks, silence blocks—less chaos, more clarity.</p>
+                
+                <p>This is how you stay unmanipulable: not by being paranoid, but by being anchored.</p>
+                
+                <h2>Public: the marketplace of artifacts (where trust is built)</h2>
+                
+                <p>Public is where you turn the private truth into clean output.</p>
+                
+                <p>Public is not "share everything." Public is selective clarity. You don't publish your confusion; you publish your synthesis. You don't publish your wounds; you publish your lessons. You don't post to be seen; you post to be useful—and usefulness becomes magnetism.</p>
+                
+                <p>Public is where your identity becomes legible to the network.</p>
+                
+                <p>And in a networked society, legibility matters. People respond to signals: competence, consistency, boundaries, generosity, taste. This is not cynicism—it's realism. Status games exist. Incentives exist. Hierarchies exist. But you don't have to become corrupt to navigate them. You just need to understand that power is not evil—power is capacity. Ethics is what decides how it gets used.</p>
+                
+                <p>So your public practice becomes a clean rule-set:</p>
+                
+                <ul>
+                    <li>Compete on output, not drama.</li>
+                    <li>Build trust by making small promises and keeping them.</li>
+                    <li>Choose arenas instead of fighting everywhere.</li>
+                    <li>Use boundaries as self-respect, not hostility.</li>
+                    <li>Don't trade your depth for cheap attention.</li>
+                </ul>
+                
+                <p>In other words: be easy to trust, hard to hijack.</p>
+                
+                <h2>The Node: what you are actually becoming</h2>
+                
+                <p>When the private forge meets the public marketplace, something rare happens: you become a node with gravity.</p>
+                
+                <p>A high-leverage node doesn't just "work hard." A high-leverage node:</p>
+                
+                <ul>
+                    <li>Learns fast (reading with intent)</li>
+                    <li>Thinks clearly (writing into frameworks)</li>
+                    <li>Ships consistently (publishing artifacts)</li>
+                    <li>Scales output (code/templates/systems)</li>
+                    <li>Builds network effects (distribution + trust)</li>
+                    <li>Protects integrity (health, attention, ethics)</li>
+                </ul>
+                
+                <p>That's why your strategy is not "do more." Your strategy is: reduce noise, pick the game, and compound leverage.</p>
+                
+                <p>The world will always offer you distraction disguised as opportunity. But the node doesn't chase everything—it builds a loop so strong that opportunities come as a byproduct.</p>
+                
+                <h2>The core tension: staying human in an AI world</h2>
+                
+                <p>You already feel the deeper philosophical layer: society is made of systems, and those systems shape behavior. Humans created order on top of nature. Media and AI now amplify incentives at scale. That can either make you reactive, anxious, scattered—or it can make you precise and powerful.</p>
+                
+                <p>This is why your loop must include something spiritual—not necessarily religious, but foundational: meaning, awareness, intentional living. Otherwise, you can become highly effective and still hollow.</p>
+                
+                <p>So the "node strategy" only works if it remains values-led:</p>
+                
+                <ul>
+                    <li>Health first.</li>
+                    <li>Discipline as self-leadership.</li>
+                    <li>Meaning over default scripts.</li>
+                    <li>Depth over performance.</li>
+                    <li>Integrity over attention.</li>
+                </ul>
+                
+                <div class="pull-quote">
+                    "Your loop isn't just a productivity method. It's a way of living that turns you into someone who compounds."
+                </div>
+                
+                <p>Private makes you real.</p>
+                <p>Public makes you legible.</p>
+                <p>The loop makes you consistent.</p>
+                <p>And consistency is what turns a person into a node that the network can't ignore.</p>
+            </div>
+            
+            <div class="article-divider"></div>
+            
+            <!-- Article Footer -->
+            <div class="flex items-center justify-between">
+                <button onclick="showList()" class="back-btn">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>All essays</span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <button onclick="shareArticle('network')" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-white/30 transition-colors">
+                        <i class="fa-solid fa-share-nodes text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Article: Levels of Life Framework -->
+        <article id="article-levels" class="hidden max-w-2xl mx-auto px-5">
+            <div class="mb-8">
+                <div class="reading-time mb-4">
+                    <i class="fa-regular fa-clock text-xs"></i>
+                    <span>8 min read</span>
+                </div>
+                <h1 class="font-['Inter'] text-3xl sm:text-4xl font-semibold tracking-tight mb-4">
+                    The Levels of Life Framework
+                </h1>
+                <p class="text-[#a3a3a3] text-lg italic">
+                    A clear mirror for where you stand — and how to move forward with intention
+                </p>
+            </div>
+            
+            <div class="prose">
+                <p class="text-xl text-[#c9a227] font-medium mb-6">A Mental Exercise for Radical Self-Awareness</p>
+                
+                <p>Pause.</p>
+                
+                <p>Right here, right now — before you scroll or plan or fix anything — take one slow breath and feel your body.</p>
+                
+                <p>This is not another "should" list. This is a mirror. A clear, no-BS mirror that shows you the exact game of life you're playing today. Not the game you wish you were playing. The real one.</p>
+                
+                <p>When you see it clearly, something powerful happens: your mind stops spinning in fog and starts moving with precision. That's the healthy mind we're building together — one that spots its own position fast, drops the hidden biases, and chooses the next move with eyes wide open.</p>
+                
+                <h2>Step 1 — Your Private Scoreboard</h2>
+                
+                <p>Rate each domain from 0 to 10 right now (0 = completely broken or absent, 10 = solid, stable, and mostly effortless).</p>
+                
+                <p>This is your private data for growth. Radical honesty here is the first act of a mind that wants to move fast and clean.</p>
+                
+                <ul>
+                    <li>Money & Stability</li>
+                    <li>Body & Health</li>
+                    <li>Relationships (partner / family)</li>
+                    <li>Friendship & Community</li>
+                    <li>God / Meaning / Inner Alignment</li>
+                </ul>
+                
+                <p class="text-[#737373] text-sm">(Optional: Add Career/Skill, Environment, Mental Health/Nervous System, Time/Freedom, or Contribution/Service)</p>
+                
+                <h2>Step 2 — Discover Your Current Level</h2>
+                
+                <p>Life has three natural stages. You don't choose the level emotionally — you land in one based on your current reality. Read each one slowly and notice which description makes your body relax or tighten.</p>
+                
+                <h3>LEVEL 1 — SURVIVAL</h3>
+                
+                <p><strong>Definition:</strong> Your basics are not secure. Life feels like emergency mode.</p>
+                
+                <p><strong>The main question:</strong> "Can I stay stable and safe?"</p>
+                
+                <p><strong>What it actually feels like inside:</strong></p>
+                <p>Life is emergency mode. Your nervous system is in low-grade fight-or-flight every day.</p>
+                
+                <p>You're not lazy — you're in survival. The mind is brilliant at this level; it just hasn't had the safety it needs to think long-term yet.</p>
+                
+                <p><strong>You're likely in Survival if 2+ of these are true:</strong></p>
+                <ul>
+                    <li>Money feels like it's always leaking or about to run out</li>
+                    <li>Sleep is chaotic and energy is low most days</li>
+                    <li>Home or key relationships feel like walking on eggshells or total isolation</li>
+                    <li>You have almost no one you can call when life hits hard</li>
+                    <li>Faith feels distant or life feels pointless</li>
+                </ul>
+                
+                <p><strong>What "winning" looks like here:</strong> Basic stability. Routines that actually stick. 3–6 months of runway. One or two people you can truly lean on. Fewer fires per week.</p>
+                
+                <p><strong>Your graduation move:</strong> Pick the single biggest leak (usually money runway or one chaotic relationship) and put all your focus there for 90 days. Everything else waits.</p>
+                
+                <h3>LEVEL 2 — THRIVING</h3>
+                
+                <p><strong>Definition:</strong> Basics are handled. Now you're building power, skills, and freedom.</p>
+                
+                <p><strong>The main question:</strong> "How strong can I become, and how much can I build?"</p>
+                
+                <p><strong>What it actually feels like inside:</strong></p>
+                <p>The constant emergency siren has finally quieted. Now the real work begins — building leverage, skill, reputation, and freedom.</p>
+                
+                <p>This is where discipline stops feeling like punishment and starts feeling like power.</p>
+                
+                <p><strong>You're likely in Thriving if 2+ of these are true:</strong></p>
+                <ul>
+                    <li>Expenses are predictable and you're saving/investing regularly</li>
+                    <li>You can handle a $1,000 surprise without panic</li>
+                    <li>You move your body and sleep is mostly consistent</li>
+                    <li>Drama is decreasing and you can set boundaries without guilt</li>
+                    <li>You have a small circle that actually respects and challenges you</li>
+                </ul>
+                
+                <p><strong>What "winning" looks like here:</strong> Income growth. Real skills. People who push you upward. The ability to say "no" to good opportunities so you can say "yes" to great ones.</p>
+                
+                <p><strong>Your graduation move:</strong> Stop optimizing for comfort. Start optimizing for leverage. Build one asset (skill, audience, business, body, reputation) that gives you real options.</p>
+                
+                <h3>LEVEL 3 — EXISTENTIAL (Purpose & Legacy)</h3>
+                
+                <p><strong>Definition:</strong> You're not just building a life — you're deciding what your life means.</p>
+                
+                <p><strong>The main question:</strong> "What is this all for — and what is my responsibility?"</p>
+                
+                <p><strong>What it actually feels like inside:</strong></p>
+                <p>You've built enough safety and strength that the question changes from "How do I survive?" to "What am I here to give?"</p>
+                
+                <p>This is where legacy thinking appears — not as philosophy, but as daily responsibility.</p>
+                
+                <p><strong>You're likely in Existential if 2+ of these are true:</strong></p>
+                <ul>
+                    <li>Money is no longer the main driver or stressor</li>
+                    <li>You think in decades and generations, not just months</li>
+                    <li>Health becomes identity ("I am a disciplined steward of this body")</li>
+                    <li>You choose people by shared values, not excitement or convenience</li>
+                    <li>You feel called to mentor, lead, serve, or build something that outlasts you</li>
+                </ul>
+                
+                <p><strong>What "winning" looks like here:</strong> Service, mastery, legacy, spiritual maturity. Turning insight into institutions, relationships, or creations that keep giving.</p>
+                
+                <p><strong>The beautiful risk:</strong> Getting trapped in beautiful thoughts without execution. The healthy mind at this stage turns every insight into one concrete action.</p>
+                
+                <h2>Step 3 — Age Context (Not Rules — Just Pressure)</h2>
+                
+                <ul>
+                    <li><strong>18–25:</strong> Survival is normal. Thriving starts when discipline becomes non-negotiable.</li>
+                    <li><strong>26–35:</strong> The pressure to build runway, career, and relationships intensifies. Existential questions often begin whispering.</li>
+                    <li><strong>36–50:</strong> Legacy pressure rises sharply. Bad survival loops here cost decades.</li>
+                    <li><strong>50+:</strong> Meaning, mentorship, and spiritual depth usually become central.</li>
+                </ul>
+                
+                <p>Age doesn't decide your level. Your current reality does. But age tells you how urgent the upgrade is.</p>
+                
+                <h2>Step 4 — The Game-Type Filter (Smart-Mind Superpower)</h2>
+                
+                <p>Once you know your level, ask: What kind of game am I actually playing right now?</p>
+                
+                <p><strong>Negative-Sum Games</strong></p>
+                <p>Drama, addiction, ego wars, toxic circles.</p>
+                <p><em>Best move:</em> Exit immediately. This is the fastest way to free up years of your life.</p>
+                
+                <p><strong>Zero-Sum Games</strong></p>
+                <p>Status fights, limited promotions, competition for attention.</p>
+                <p><em>Best move:</em> Play selectively and strategically. Don't give it your best energy.</p>
+                
+                <p><strong>Positive-Sum Games</strong></p>
+                <p>Skill-building, honest business, deep relationships, service.</p>
+                <p><em>Best move:</em> Pour everything here. This is where real compounding happens.</p>
+                
+                <p>A healthy, fast mind stops donating its life to negative-sum games. That single awareness changes everything.</p>
+                
+                <h2>Step 5 — The 10-Second Clarity Test</h2>
+                
+                <p><strong>Which sentence feels most true in your body right now?</strong></p>
+                
+                <p><strong>SURVIVAL</strong><br>
+                "I need stability. I can't build big until I stop bleeding."</p>
+                
+                <p><strong>THRIVING</strong><br>
+                "My basics are handled. Now I need discipline and execution to build real power."</p>
+                
+                <p><strong>EXISTENTIAL</strong><br>
+                "I'm building legacy now. My choices must match my values and what I'm here for."</p>
+                
+                <p>Pick the one that resonates most. Don't overthink it — your body already knows.</p>
+                
+                <h2>Step 6 — Concrete Money Signals (Adjust for Your City)</h2>
+                
+                <ul>
+                    <li><strong>Survival:</strong> Less than 1 month runway or debt panic</li>
+                    <li><strong>Transition:</strong> 1–3 months runway, still fragile</li>
+                    <li><strong>Thriving:</strong> 3–12 months runway + stable income + investing has begun</li>
+                    <li><strong>Existential-ready:</strong> 12+ months runway OR high income + strong assets + real time freedom</li>
+                </ul>
+                
+                <p>Runway = savings ÷ monthly essential expenses. These numbers must be adjusted by location and responsibilities, but the logic is universal.</p>
+                
+                <h2>Your Personal Integration Exercise</h2>
+                
+                <p>Take 3 minutes right now. Write or speak these answers out loud:</p>
+                
+                <p><strong>Do This Now</strong></p>
+                <ol>
+                    <li>My current level is _______________</li>
+                    <li>The domain dragging me down the most is _______________</li>
+                    <li>One specific graduation requirement I will act on this week is _______________</li>
+                    <li>One negative-sum game I am ready to stop donating my energy to is _______________</li>
+                </ol>
+                
+                <p>This is not just reflection. This is neural training. You are teaching your mind to see reality faster, drop denial quicker, and move with intention. That is the foundation of a truly effective mind.</p>
+                
+                <div class="pull-quote">
+                    "You now know where you stand. The only question left is: What is the single smallest move you can make today that proves to yourself you're serious about graduating?"
+                </div>
+                
+                <p>Write it down. Do it before the day ends.</p>
+                
+                <div class="bg-[#0a0a0a] border border-[#c9a227]/20 rounded-xl p-6 my-8">
+                    <h3 class="font-['Inter'] text-lg font-semibold text-[#c9a227] mb-3">Want a personalized diagnosis?</h3>
+                    <p class="text-[#a3a3a3] mb-4">If this resonated and you want me to read your specific situation and write you a short, personal "journal-voice" paragraph (the kind that feels like someone who truly sees you), just share:</p>
+                    <ul class="text-[#a3a3a3] space-y-2 mb-4">
+                        <li>• Your age range (e.g., 26–35)</li>
+                        <li>• Rough runway in months</li>
+                        <li>• 0–10 score for "relationship with God / inner alignment"</li>
+                        <li>• 0–10 score for "friendship & community"</li>
+                    </ul>
+                    <p class="text-[#737373] text-sm">I'll give you back exactly where you are and the precise next move that fits your life — no fluff, no generic advice.</p>
+                </div>
+                
+                <p class="text-[#737373] text-sm italic">That's how real transformation actually happens — not in big dramatic moments, but in quiet, consistent acts of clarity.</p>
+            </div>
+            
+            <div class="article-divider"></div>
+            
+            <!-- Article Footer -->
+            <div class="flex items-center justify-between">
+                <button onclick="showList()" class="back-btn">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>All essays</span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <button onclick="shareArticle('levels')" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-white/30 transition-colors">
+                        <i class="fa-solid fa-share-nodes text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <script>
+        // Reading progress bar
+        function updateProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        
+        window.addEventListener('scroll', updateProgress);
+        
+        // Show article
+        function showArticle(id) {
+            document.getElementById('articleList').classList.add('hidden');
+            document.getElementById('article-' + id).classList.remove('hidden');
+            window.scrollTo(0, 0);
+            updateProgress();
+        }
+        
+        // Show list
+        function showList() {
+            document.getElementById('articleList').classList.remove('hidden');
+            document.getElementById('article-network').classList.add('hidden');
+            document.getElementById('article-levels').classList.add('hidden');
+            window.scrollTo(0, 0);
+            document.getElementById('progressBar').style.width = '0%';
+        }
+        
+        // Share article
+        function shareArticle(id) {
+            const url = window.location.href.split('?')[0] + '?article=' + id;
+            if (navigator.share) {
+                navigator.share({
+                    title: document.querySelector('#article-' + id + ' h1').textContent.trim(),
+                    url: url
+                });
+            } else {
+                navigator.clipboard.writeText(url);
+                alert('Link copied to clipboard');
+            }
+        }
+        
+        // Check for URL params on load
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const article = params.get('article');
+            if (article && (article === 'network' || article === 'levels')) {
+                showArticle(article);
+            }
+        });
+    </script>
+</body>
+</html>
