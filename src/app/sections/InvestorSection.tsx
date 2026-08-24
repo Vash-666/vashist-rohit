@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { InvestorIcon } from "../components/PrimordialIcons";
+import { OuroborosIcon } from "../components/PrimordialIcons";
 
 export default function InvestorSection() {
   return (
@@ -43,7 +43,7 @@ export default function InvestorSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <InvestorIcon size={100} color="#D97706" />
+            <OuroborosIcon size={100} color="#D97706" />
           </motion.div>
 
           {/* Title */}

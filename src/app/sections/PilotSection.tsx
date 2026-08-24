@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PilotIcon } from "../components/PrimordialIcons";
+import { WingsIcon } from "../components/PrimordialIcons";
 
 export default function PilotSection() {
   return (
@@ -36,7 +36,7 @@ export default function PilotSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <PilotIcon size={80} color="#0EA5E9" />
+            <WingsIcon size={80} color="#0EA5E9" />
           </motion.div>
 
           {/* Title */}
