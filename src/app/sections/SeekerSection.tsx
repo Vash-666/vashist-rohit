@@ -6,7 +6,7 @@ import { SpiralIcon } from "../components/PrimordialIcons";
 export default function SeekerSection() {
   return (
     <section
-      id="seeker"
+      id="pattern"
       className="relative min-h-screen flex items-center py-32 overflow-hidden"
     >
       {/* Background gradient */}
@@ -63,7 +63,7 @@ export default function SeekerSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            The Seeker
+            The Pattern
           </motion.h2>
 
           {/* Content */}
@@ -75,7 +75,7 @@ export default function SeekerSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              But systems without wisdom are just noise.
+              Capability without inner clarity is well-dressed drift.
             </motion.p>
 
             <motion.p
@@ -85,7 +85,7 @@ export default function SeekerSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              I walk the line where ancient East meets modern West — questions of life, meaning, soul. The psychology of transformation.
+              Between temple and terminal, I walk. Ancient maps of the self meet the psychology of now — religion, history, meaning, discipline, transformation.
             </motion.p>
 
             <motion.p
@@ -95,7 +95,7 @@ export default function SeekerSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              At inflection points, founders and executives come to me. Not for answers. For the right questions.
+              At the sharp turns, leaders don&apos;t come asking for answers. They come for the question sharp enough to cut through fear, ambition, and the stories we tell ourselves.
             </motion.p>
 
             <motion.p
@@ -105,7 +105,7 @@ export default function SeekerSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              External success without internal clarity is hollow.
+              The highest form of success is the one that does not cost the soul.
             </motion.p>
           </div>
         </div>

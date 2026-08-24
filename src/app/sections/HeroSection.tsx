@@ -67,20 +67,20 @@ export default function HeroSection({ mousePosition, scrollProgress }: HeroSecti
           Vash
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - V79: Pattern Seer, not Builder */}
         <motion.p
           variants={itemVariants}
           className="font-serif text-[clamp(1.5rem,4vw,3rem)] text-[#FAFAF9] mb-8 tracking-wide"
         >
-          Builder. Seeker.
+          Pattern Seer. System Architect.
         </motion.p>
 
-        {/* Bracket text */}
+        {/* Bracket text - V79: See, not build */}
         <motion.p
           variants={itemVariants}
           className="text-lg md:text-xl text-[#A1A1AA] max-w-md mx-auto italic"
         >
-          [I built things in the future.]
+          [I see things before they&apos;re built.]
         </motion.p>
       </motion.div>
 
@@ -91,13 +91,10 @@ export default function HeroSection({ mousePosition, scrollProgress }: HeroSecti
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.8 }}
       >
-        <span className="text-xs tracking-[0.3em] text-[#A1A1AA] uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-[#C9A84C]" />
-        </motion.div>
+        <span className="text-xs tracking-[0.3em] text-[#A1A1AA] uppercase">
+          Scroll
+        </span>
+        <ChevronDown className="w-5 h-5 text-[#C9A84C]" />
       </motion.div>
     </section>
   );

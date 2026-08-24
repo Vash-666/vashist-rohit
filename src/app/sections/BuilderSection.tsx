@@ -6,7 +6,7 @@ import { TreeIcon } from "../components/PrimordialIcons";
 interface Project {
   id: string;
   title: string;
-  description: string;
+  proof: string;
   tags: string[];
   status: "live" | "building" | "concept";
   link?: string;
@@ -16,7 +16,7 @@ const projects: Project[] = [
   {
     id: "rwa-tennis-trophy",
     title: "RWA Tennis Trophy Tokenization",
-    description: "A complete blockchain prototype demonstrating real-world asset tokenization. A 1947 tennis trophy, its champions, and their stories — immutably preserved on-chain with IPFS metadata storage.",
+    proof: "Proof that physical things can have digital souls. A 1947 trophy, its champions, their stories — preserved not as data, but as truth.",
     tags: ["Solidity", "ERC-721", "IPFS", "Hardhat", "Sepolia"],
     status: "live",
     link: "https://github.com/Vash-666/-Rwa-trophy-token"
@@ -24,7 +24,7 @@ const projects: Project[] = [
   {
     id: "agentic-ai-system",
     title: "Agentic AI Mastery Lab",
-    description: "Multi-agent orchestration system where specialized AI agents collaborate — Switch routes, Quality audits, Content creates. A living experiment in autonomous agent coordination.",
+    proof: "Proof that AI agents can collaborate without hierarchy. Switch routes. Quality audits. Content creates. No boss. Just signal.",
     tags: ["Multi-Agent Systems", "AI Orchestration", "TypeScript", "OpenClaw"],
     status: "live",
     link: "https://github.com/Vash-666/agentic-ai-systems"
@@ -32,9 +32,16 @@ const projects: Project[] = [
   {
     id: "homeguardian",
     title: "HomeGuardian AI",
-    description: "Predictive maintenance for homes. Machine learning models that anticipate appliance failures before they happen — turning emergency repairs into scheduled maintenance.",
+    proof: "Proof that machines can tell us before they break. The quiet prediction that saves the emergency.",
     tags: ["Machine Learning", "IoT", "Predictive Analytics", "Python"],
     status: "building"
+  },
+  {
+    id: "federal-ai",
+    title: "Federal AI Modernization",
+    proof: "Proof that legacy systems can learn new patterns. What I built where I cannot show you.",
+    tags: ["SAM.gov", "FPDS", "Bedrock", "ServiceNow", "FedRAMP"],
+    status: "live"
   }
 ];
 
@@ -47,7 +54,7 @@ const statusConfig = {
 export default function BuilderSection() {
   return (
     <section
-      id="builder"
+      id="truth"
       className="relative min-h-screen flex items-center py-32 overflow-hidden"
     >
       {/* Background gradient */}
@@ -88,7 +95,7 @@ export default function BuilderSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              The<br />Builder
+              The<br />Truth
             </motion.h2>
           </div>
 
@@ -101,7 +108,7 @@ export default function BuilderSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Systems are my language.
+              I don&apos;t build systems. I see patterns.
             </motion.p>
 
             <motion.p
@@ -111,7 +118,7 @@ export default function BuilderSection() {
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              I build where code meets governance — tokenization protocols, NLP engines, AI that shapes how societies function.
+              Ten years reading the noise. You learn the smell of real.
             </motion.p>
 
             <motion.p
@@ -121,10 +128,10 @@ export default function BuilderSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              A decade in emerging tech teaches you pattern recognition. You learn to spot what&apos;s real before the hype arrives.
+              Where code meets governance meets human truth — that&apos;s where I translate.
             </motion.p>
 
-            {/* Projects */}
+            {/* Projects - Proof not Portfolio */}
             <motion.div
               className="pt-8 border-t border-[#262626]"
               initial={{ opacity: 0, y: 20 }}
@@ -136,7 +143,7 @@ export default function BuilderSection() {
               <p className="text-[#FAFAF9] mb-4">Federal AI modernization.</p>
               <p className="text-[#FAFAF9] mb-8">Startups that raised, scaled, and sometimes failed.</p>
               
-              <p className="text-[#4F46E5] italic mb-12">Every system is a bet on the future.</p>
+              <p className="text-[#4F46E5] italic mb-12">Every system is a bet you&apos;re willing to lose.</p>
 
               {/* Projects List */}
               <div className="space-y-8">
@@ -188,7 +195,7 @@ function ProjectContent({ project }: { project: Project }) {
       </div>
       
       <p className="text-[#A1A1AA] text-sm leading-relaxed mb-3">
-        {project.description}
+        {project.proof}
       </p>
       
       <div className="flex flex-wrap gap-2">

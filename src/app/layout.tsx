@@ -16,13 +16,13 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Vash — Builder. Seeker.",
-  description: "I built things in the future. AI systems. Web3 protocols. Startups in emerging tech. A decade in pattern recognition.",
-  keywords: ["AI", "Web3", "Blockchain", "Ethereum", "Federal AI", "Tokenization", "Builder", "Seeker"],
+  title: "Vash — Pattern Seer. System Architect.",
+  description: "I see things before they're built. AI systems. Web3 protocols. Federal modernization. A decade reading the noise.",
+  keywords: ["AI", "Web3", "Blockchain", "Ethereum", "Federal AI", "Tokenization", "Pattern Recognition", "System Architecture"],
   authors: [{ name: "Rohit Vashist" }],
   openGraph: {
-    title: "Vash — Builder. Seeker.",
-    description: "I built things in the future. AI systems. Web3 protocols.",
+    title: "Vash — Pattern Seer. System Architect.",
+    description: "I see things before they're built. AI systems. Web3 protocols.",
     type: "website",
   },
 };

@@ -1,22 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { OuroborosIcon } from "../components/PrimordialIcons";
+import { InvestorIcon } from "../components/PrimordialIcons";
 
 export default function InvestorSection() {
   return (
     <section
-      id="investor"
+      id="silence"
       className="relative min-h-screen flex items-center py-32 overflow-hidden"
     >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-investor" />
       
-      {/* Subtle grid pattern */}
+      {/* Grid texture */}
       <div 
         className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(#D97706 1px, transparent 1px), linear-gradient(90deg, #D97706 1px, transparent 1px)`,
+          backgroundImage: 'linear-gradient(#D97706 1px, transparent 1px), linear-gradient(90deg, #D97706 1px, transparent 1px)',
           backgroundSize: '60px 60px'
         }}
       />
@@ -28,7 +28,7 @@ export default function InvestorSection() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+        style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
       >
         04
       </motion.div>
@@ -43,7 +43,7 @@ export default function InvestorSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <OuroborosIcon size={100} color="#D97706" />
+            <InvestorIcon size={100} color="#D97706" />
           </motion.div>
 
           {/* Title */}
@@ -54,7 +54,7 @@ export default function InvestorSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            The Investor
+            The Silence
           </motion.h2>
 
           {/* Content */}
@@ -66,7 +66,7 @@ export default function InvestorSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Patient capital in a world of noise.
+              Patient capital is a form of prayer.
             </motion.p>
 
             <motion.p
@@ -76,7 +76,7 @@ export default function InvestorSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              I invest in blockchain, AI, transformative technologies — not for quarterly returns, but for decades of compound wisdom.
+              Long bets on technology that compounds — blockchain, intelligence, transformations that outlast quarters and cycles.
             </motion.p>
 
             <motion.p
@@ -86,7 +86,7 @@ export default function InvestorSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              The best returns come to those who wait. Who prepare. Who see patterns others miss in the chaos.
+              The real edge has never been speed. It has always been the courage to see clearly, prepare deeply, and remain solvent long enough for truth to arrive.
             </motion.p>
 
             <motion.p
@@ -96,7 +96,7 @@ export default function InvestorSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              Long-term thinking is the ultimate edge.
+              The edge is restraint, preparation, and staying solvent long enough to be right.
             </motion.p>
           </div>
         </div>
